@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+.section {
+  --plum: #662153;
+  --plum-deep: #54173f;
+  --teal: #3aa59d;
+  --teal-dark: #2d857e;
+  --teal-soft: #7fd0c8;
+  --lav: #f4ebf1;
+
+  position: relative;
+  background: var(--lav);
+  padding: clamp(4rem, 9vw, 7rem) clamp(1.5rem, 6vw, 5rem);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* ---------- Ondas decorativas teal ---------- */
+.topWave,
+.bottomWave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(28px, 4vw, 46px);
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.topWave {
+  top: 0;
+}
+
+.bottomWave {
+  bottom: 0;
+}
+
+/* ---------- Manchas ambientales teal ---------- */
+.blob {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 165, 157, 0.22) 0%, rgba(58, 165, 157, 0) 70%);
+  pointer-events: none;
+}
+
+.blobOne {
+  width: 360px;
+  height: 360px;
+  top: -60px;
+  right: -80px;
+}
+
+.blobTwo {
+  width: 260px;
+  height: 260px;
+  bottom: 10%;
+  left: -100px;
+}
+
+.dots {
+  position: absolute;
+  z-index: 0;
+  bottom: 8%;
+  right: 4%;
+  width: 90px;
+  height: 90px;
+  opacity: 0.55;
+}
+
+/* ---------- Encabezado ---------- */
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto clamp(2.6rem, 6vw, 4rem);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+.title {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.4vw, 2.7rem);
+  line-height: 1.15;
+  color: var(--plum);
+}
+
+/* ---------- Grid de tarjetas ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+/* ---------- Tarjeta ---------- */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: clamp(2.2rem, 3vw, 2.6rem) clamp(1.8rem, 2.6vw, 2.2rem) clamp(2.4rem, 3vw, 2.8rem);
+  border-radius: 10px 10px 56px 10px; /* esquina inferior derecha redondeada */
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--teal-soft), var(--teal) 45%, var(--teal-dark)) 1;
+  box-shadow: 0 24px 46px -20px rgba(102, 33, 83, 0.45),
+    0 2px 10px -2px rgba(102, 33, 83, 0.12);
+  overflow: hidden;
+
+  /* animación de entrada/salida al hacer scroll */
+  opacity: 0;
+  transform: translateX(-70px);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.7s ease;
+  will-change: transform, opacity;
+}
+
+/* mancha teal en la esquina redondeada, hace juego con las ondas de la sección */
+.card::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 165, 157, 0.18) 0%, rgba(58, 165, 157, 0) 72%);
+  pointer-events: none;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mark {
+  position: absolute;
+  top: -22px;
+  left: 26px;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--plum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 18px -4px rgba(102, 33, 83, 0.55),
+    0 0 0 4px rgba(58, 165, 157, 0.28);
+}
+
+.cardEyebrow,
+.cardTitle,
+.cardBody {
+  position: relative;
+  z-index: 1;
+}
+
+.mark svg {
+  width: 26px;
+  height: 26px;
+}
+
+.cardEyebrow {
+  margin-top: 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+.cardTitle {
+  margin: 0.35rem 0 1rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.55rem;
+  color: var(--plum);
+}
+
+.cardBody {
+  color: #4b3a46;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+.cardBody p {
+  margin: 0;
+}
+
+.valuesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.valuesList li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.valuesList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 3px rgba(58, 165, 157, 0.2);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

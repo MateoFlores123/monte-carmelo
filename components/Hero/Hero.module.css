@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+.hero {
+  /* Debe coincidir con --nav-h en Nav.module.css */
+  --nav-h: clamp(178px, 20vw, 208px);
+  --plum: #662153;
+  --plum-deep: #54173f;
+  --teal: #3aa59d;
+  --teal-dark: #2d857e;
+  --lav: #f4ebf1;
+  /* Ancho del panel de texto: compartido por el panel, su halo y el
+     trazo teal, para que la curva de los tres coincida exactamente */
+  --panel-w: min(87%, 1180px);
+
+  position: relative;
+  min-height: 100vh;
+  margin-top: calc(-1 * var(--nav-h));
+  overflow: hidden;
+  background: #ffffff;
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+/* ---------- Carrusel a pantalla completa ---------- */
+.carousel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* visible, al centro */
+.slotCurrent {
+  transform: translateX(0%);
+  z-index: 1;
+}
+
+/* fuera de pantalla, a la derecha */
+.slotRight {
+  transform: translateX(100%);
+  z-index: 0;
+}
+
+/* fuera de pantalla, a la izquierda */
+.slotLeft {
+  transform: translateX(-100%);
+  z-index: 0;
+}
+
+/* ---------- Halo difuminado: mismo recorte que el panel, pero borroso.
+   Es lo que hace que el blanco "se derrita" hacia la foto en vez de
+   cortarse en seco. ---------- */
+.panelGlow {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--panel-w) + 70px);
+  z-index: 1;
+  background: #ffffff;
+  filter: blur(34px);
+  opacity: 0.92;
+  pointer-events: none;
+  clip-path: polygon(
+    0% 0%, 58.00% 0.00%, 58.16% 1.67%, 58.42% 3.33%, 58.75% 5.00%, 59.11% 6.67%,
+    59.48% 8.33%, 59.82% 10.00%, 60.10% 11.67%, 60.29% 13.33%, 60.34% 15.00%,
+    60.23% 16.67%, 59.93% 18.33%, 59.42% 20.00%, 58.71% 21.67%, 57.83% 23.33%,
+    56.83% 25.00%, 55.76% 26.67%, 54.65% 28.33%, 53.57% 30.00%, 52.54% 31.67%,
+    51.62% 33.33%, 50.86% 35.00%, 50.29% 36.67%, 49.95% 38.33%, 49.90% 40.00%,
+    50.11% 41.67%, 50.53% 43.33%, 51.09% 45.00%, 51.74% 46.67%, 52.41% 48.33%,
+    53.04% 50.00%, 53.56% 51.67%, 53.92% 53.33%, 54.05% 55.00%, 53.90% 56.67%,
+    53.46% 58.33%, 52.80% 60.00%, 51.96% 61.67%, 51.01% 63.33%, 50.00% 65.00%,
+    48.99% 66.67%, 48.04% 68.33%, 47.20% 70.00%, 46.54% 71.67%, 46.10% 73.33%,
+    45.93% 75.00%, 46.04% 76.67%, 46.38% 78.33%, 46.88% 80.00%, 47.50% 81.67%,
+    48.15% 83.33%, 48.79% 85.00%, 49.35% 86.67%, 49.78% 88.33%, 50.00% 90.00%,
+    49.99% 91.67%, 49.70% 93.33%, 49.25% 95.00%, 48.74% 96.67%, 48.29% 98.33%,
+    48.00% 100.00%, 0% 100%
+  );
+}
+
+/* ---------- Panel de texto: mismo recorte, nítido, blanco sólido ---------- */
+.panel {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--panel-w);
+  z-index: 2;
+  background: #ffffff;
+  clip-path: polygon(
+    0% 0%, 58.00% 0.00%, 58.16% 1.67%, 58.42% 3.33%, 58.75% 5.00%, 59.11% 6.67%,
+    59.48% 8.33%, 59.82% 10.00%, 60.10% 11.67%, 60.29% 13.33%, 60.34% 15.00%,
+    60.23% 16.67%, 59.93% 18.33%, 59.42% 20.00%, 58.71% 21.67%, 57.83% 23.33%,
+    56.83% 25.00%, 55.76% 26.67%, 54.65% 28.33%, 53.57% 30.00%, 52.54% 31.67%,
+    51.62% 33.33%, 50.86% 35.00%, 50.29% 36.67%, 49.95% 38.33%, 49.90% 40.00%,
+    50.11% 41.67%, 50.53% 43.33%, 51.09% 45.00%, 51.74% 46.67%, 52.41% 48.33%,
+    53.04% 50.00%, 53.56% 51.67%, 53.92% 53.33%, 54.05% 55.00%, 53.90% 56.67%,
+    53.46% 58.33%, 52.80% 60.00%, 51.96% 61.67%, 51.01% 63.33%, 50.00% 65.00%,
+    48.99% 66.67%, 48.04% 68.33%, 47.20% 70.00%, 46.54% 71.67%, 46.10% 73.33%,
+    45.93% 75.00%, 46.04% 76.67%, 46.38% 78.33%, 46.88% 80.00%, 47.50% 81.67%,
+    48.15% 83.33%, 48.79% 85.00%, 49.35% 86.67%, 49.78% 88.33%, 50.00% 90.00%,
+    49.99% 91.67%, 49.70% 93.33%, 49.25% 95.00%, 48.74% 96.67%, 48.29% 98.33%,
+    48.00% 100.00%, 0% 100%
+  );
+}
+
+/* Cada slide de texto ocupa todo el panel y se desliza con el mismo
+   ritmo que su foto correspondiente */
+.textSlide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  margin-top: -100px;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--nav-h) + clamp(1.25rem, 3vw, 2.25rem)) clamp(3.5rem, 9vw, 6.5rem)
+    clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 6vw, 5rem);
+  transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1);
+  pointer-events: none;
+}
+
+.textSlide.slotCurrent {
+  pointer-events: auto;
+}
+
+/* ---------- Rayito teal trazando el borde ondulado, igual que en el nav ---------- */
+.edgeAccent {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--panel-w);
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ---------- Indicadores del carrusel ---------- */
+.dots {
+  position: absolute;
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  bottom: clamp(2rem, 5vw, 3.5rem);
+  z-index: 4;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dot:hover {
+  transform: scale(1.15);
+}
+
+.dotActive {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+/* ---------- Onda sutil al pie del Hero ---------- */
+.bottomWave {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  z-index: 2;
+  width: 100%;
+  height: clamp(34px, 5vw, 60px);
+}
+
+.bottomWaveFill {
+  fill: #ffffff;
+}
+
+/* ---------- Texto + CTA ---------- */
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+.title {
+  margin: 0 0 1.1rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.8rem, 4.6vw, 3.9rem);
+  line-height: 1.05;
+  color: var(--plum);
+}
+
+.titleLine {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.4em;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+.text {
+  margin: 0 0 2.1rem;
+  max-width: 38ch;
+  font-size: 1.22rem;
+  line-height: 1.62;
+  color: #4b3a46;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--teal);
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(45, 133, 126, 0.32);
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+}
+
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  color: var(--plum);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.ctaGhost:hover,
+.ctaGhost:focus-visible {
+  border-color: var(--teal);
+  color: var(--teal-dark);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero {
+    --panel-w: 100%;
+    min-height: 100vh;
+  }
+
+  .panel {
+    position: relative;
+    height: auto;
+    min-height: 62vh;
+    clip-path: none;
+    background: transparent;
+  }
+
+  .textSlide {
+    position: absolute;
+    justify-content: flex-end;
+    background: rgba(255, 255, 255, 0.94);
+    padding: calc(var(--nav-h) + 1.5rem) 1.5rem 2.5rem;
+  }
+
+  .panelGlow {
+    display: none;
+  }
+
+  .edgeAccent {
+    display: none;
+  }
+
+  .carousel {
+    /* en móvil la foto queda de fondo completo, con el panel semi-opaco encima */
+    inset: 0;
+  }
+
+  .title {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+
+  .dots {
+    bottom: auto;
+    top: calc(var(--nav-h) + 0.75rem);
+    right: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .textSlide {
+    transition: none;
+  }
+
+  .cta,
+  .ctaGhost,
+  .dot {
+    transition: none;
+  }
+}

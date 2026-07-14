@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+.header {
+  --plum: #662153;
+  --plum-deep: #54173f;
+  --teal: #3aa59d;
+  --teal-dark: #2d857e;
+  --teal-soft: #7fd0c8;
+  --lav: #f4ebf1;
+  --nav-h: clamp(178px, 20vw, 208px);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: var(--nav-h);
+  overflow: hidden;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  transition: height 0.62s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Estado "cubriendo": el propio nav crece hasta tapar toda la pantalla */
+.header.covering {
+  height: 100vh;
+}
+
+/* Reserva el alto del nav en el flujo normal de la página, ya que el
+   nav es "fixed". Debe medir lo mismo que --nav-h. */
+.navSpacer {
+  height: clamp(178px, 20vw, 208px);
+}
+
+/* Capa decorativa: la foto de fondo, recortada en una sola onda limpia
+   (grande/profunda a la izquierda para el logo, pequeña a la derecha).
+   Al cubrir, el mismo recorte se "derrite" hasta volverse un rectángulo
+   completo — por eso ambos clip-path tienen la misma cantidad de puntos,
+   así el navegador puede animar de uno al otro suavemente.
+   Cambia la url por la foto real de tu local. */
+.hero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--plum);
+  background-image:
+    linear-gradient(100deg, rgba(30, 10, 26, 0.72) 0%, rgba(30, 10, 26, 0.42) 45%, rgba(30, 10, 26, 0.6) 100%),
+    url("/images/nav-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  transition: clip-path 0.62s cubic-bezier(0.65, 0, 0.35, 1);
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100.00% 20.00%, 98.57% 20.96%, 97.14% 22.32%, 95.71% 23.97%,
+    94.29% 25.80%, 92.86% 27.69%, 91.43% 29.53%, 90.00% 31.20%, 88.57% 32.58%,
+    87.14% 33.57%, 85.71% 34.04%, 84.29% 33.96%, 82.86% 33.45%, 81.43% 32.62%,
+    80.00% 31.56%, 78.57% 30.37%, 77.14% 29.14%, 75.71% 27.99%, 74.29% 27.00%,
+    72.86% 26.27%, 71.43% 25.91%, 70.00% 26.00%, 68.57% 26.54%, 67.14% 27.47%,
+    65.71% 28.71%, 64.29% 30.20%, 62.86% 31.85%, 61.43% 33.60%, 60.00% 35.36%,
+    58.57% 37.06%, 57.14% 38.62%, 55.71% 39.98%, 54.29% 41.06%, 52.86% 41.77%,
+    51.43% 42.05%, 50.00% 41.81%, 48.57% 41.10%, 47.14% 40.05%, 45.71% 38.75%,
+    44.29% 37.31%, 42.86% 35.84%, 41.43% 34.45%, 40.00% 33.24%, 38.57% 32.33%,
+    37.14% 31.80%, 35.71% 31.79%, 34.29% 32.33%, 32.86% 33.38%, 31.43% 34.86%,
+    30.00% 36.70%, 28.57% 38.81%, 27.14% 41.11%, 25.71% 43.51%, 24.29% 45.93%,
+    22.86% 48.28%, 21.43% 50.48%, 20.00% 52.45%, 18.57% 54.10%, 17.14% 55.35%,
+    15.71% 56.13%, 14.29% 56.47%, 12.86% 56.33%, 11.43% 55.81%, 10.00% 54.99%,
+    8.57% 53.96%, 7.14% 52.79%, 5.71% 51.58%, 4.29% 50.41%, 2.86% 49.37%,
+    1.43% 48.53%, 0.00% 48.00%
+  );
+}
+
+.header.covering .hero {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100.00% 100.00%, 98.57% 100.00%, 97.14% 100.00%, 95.71% 100.00%,
+    94.29% 100.00%, 92.86% 100.00%, 91.43% 100.00%, 90.00% 100.00%, 88.57% 100.00%,
+    87.14% 100.00%, 85.71% 100.00%, 84.29% 100.00%, 82.86% 100.00%, 81.43% 100.00%,
+    80.00% 100.00%, 78.57% 100.00%, 77.14% 100.00%, 75.71% 100.00%, 74.29% 100.00%,
+    72.86% 100.00%, 71.43% 100.00%, 70.00% 100.00%, 68.57% 100.00%, 67.14% 100.00%,
+    65.71% 100.00%, 64.29% 100.00%, 62.86% 100.00%, 61.43% 100.00%, 60.00% 100.00%,
+    58.57% 100.00%, 57.14% 100.00%, 55.71% 100.00%, 54.29% 100.00%, 52.86% 100.00%,
+    51.43% 100.00%, 50.00% 100.00%, 48.57% 100.00%, 47.14% 100.00%, 45.71% 100.00%,
+    44.29% 100.00%, 42.86% 100.00%, 41.43% 100.00%, 40.00% 100.00%, 38.57% 100.00%,
+    37.14% 100.00%, 35.71% 100.00%, 34.29% 100.00%, 32.86% 100.00%, 31.43% 100.00%,
+    30.00% 100.00%, 28.57% 100.00%, 27.14% 100.00%, 25.71% 100.00%, 24.29% 100.00%,
+    22.86% 100.00%, 21.43% 100.00%, 20.00% 100.00%, 18.57% 100.00%, 17.14% 100.00%,
+    15.71% 100.00%, 14.29% 100.00%, 12.86% 100.00%, 11.43% 100.00%, 10.00% 100.00%,
+    8.57% 100.00%, 7.14% 100.00%, 5.71% 100.00%, 4.29% 100.00%, 2.86% 100.00%,
+    1.43% 100.00%, 0.00% 100.00%
+  );
+}
+
+.bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3.5rem) 0.4rem;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  height: 56px;         /* alto fijo de la fila: agrandar la imagen no mueve nada más */
+  overflow: visible;    /* deja que la imagen se desborde visualmente si es más grande */
+}
+
+/* Tu logo como imagen. Ajusta "height"/"margin-top" a tu gusto — como
+   está centrado dentro de un .logo de alto fijo, nunca empuja al resto
+   del nav hacia abajo. Si agrandas mucho la imagen, sube un poco --nav-h
+   arriba para que no se recorte contra el borde inferior del nav. */
+.logo img {
+  display: block;
+  margin-top: 23px;
+  margin-right: 1px;
+  height: 90px;
+  width: auto;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.55rem;
+  color: #eecfe2;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.tag {
+  margin-top: 0.28rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--lav);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Enlaces ---------- */
+.links {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-top: -30px;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 2.4rem);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--lav);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.1rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+  transition: color 0.2s ease;
+}
+
+.linkIcon {
+  display: inline-flex;
+  width: 17px;
+  height: 17px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.linkIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.link:hover .linkIcon,
+.link:focus-visible .linkIcon {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--teal-soft);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: #fff;
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Botón WhatsApp ---------- */
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: -30px;
+  flex-shrink: 0;
+  background: var(--teal);
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 1.7rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(45, 133, 126, 0.35);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.whatsapp svg {
+  width: 20px;
+  height: 20px;
+}
+
+.whatsapp:hover,
+.whatsapp:focus-visible {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+}
+
+/* ---------- Rayito teal (acento a la derecha) ---------- */
+.accent {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: clamp(20px, 3vw, 32px);
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.header.covering .accent {
+  opacity: 0;
+}
+
+/* ---------- Menú móvil ---------- */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  height: 2.5px;
+  width: 24px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background: var(--lav);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.whatsappMobile {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .bar {
+    gap: 1rem;
+  }
+
+  .burger {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .whatsapp {
+    display: none;
+  }
+
+  .links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+    background: var(--plum);
+    box-shadow: 0 14px 24px rgba(84, 23, 63, 0.35);
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+  }
+
+  .links.open {
+    max-height: 420px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .link {
+    padding: 0.9rem clamp(1.25rem, 4vw, 3.5rem);
+    letter-spacing: 0.14em;
+    text-shadow: none;
+  }
+
+  .linkIcon {
+    width: 19px;
+    height: 19px;
+  }
+
+  .link::after {
+    display: none;
+  }
+
+  .link:hover {
+    background: var(--plum-deep);
+  }
+
+  .whatsappMobile {
+    display: block;
+    margin: 0.6rem clamp(1.25rem, 4vw, 3.5rem) 0;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: var(--teal);
+    border-radius: 999px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .link::after,
+  .whatsapp,
+  .links {
+    transition: none;
+  }
+
+  .header,
+  .hero {
+    transition-duration: 0.01s;
+  }
+}

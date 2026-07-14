@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+.section {
+  --plum: #662153;
+  --plum-deep: #54173f;
+  --teal: #3aa59d;
+  --teal-dark: #2d857e;
+  --teal-soft: #7fd0c8;
+  --lav: #f4ebf1;
+
+  position: relative;
+  background: #ffffff;
+  padding: clamp(4rem, 9vw, 7rem) clamp(1.5rem, 6vw, 5rem) clamp(6rem, 10vw, 8rem);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(280px, 460px) 1fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+/* ---------- Foto ---------- */
+.media {
+  position: relative;
+}
+
+.photo {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--lav);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 26px 50px -18px rgba(102, 33, 83, 0.35);
+}
+
+/* recorta la misma foto con el borde ondulado, sutil, apenas se nota
+   hasta que uno lo mira con calma */
+.photo {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100.00% 95.00%, 97.92% 94.41%, 95.83% 93.51%, 93.75% 92.45%,
+    91.67% 91.41%, 89.58% 90.55%, 87.50% 90.05%, 85.42% 90.05%, 83.33% 90.53%,
+    81.25% 91.37%, 79.17% 92.45%, 77.08% 93.64%, 75.00% 94.81%, 72.92% 95.84%,
+    70.83% 96.61%, 68.75% 96.99%, 66.67% 96.89%, 64.58% 96.45%, 62.50% 95.73%,
+    60.42% 94.82%, 58.33% 93.78%, 56.25% 92.68%, 54.17% 91.61%, 52.08% 90.63%,
+    50.00% 89.82%, 47.92% 89.25%, 45.83% 89.00%, 43.75% 89.13%, 41.67% 89.64%,
+    39.58% 90.46%, 37.50% 91.50%, 35.42% 92.70%, 33.33% 93.98%, 31.25% 95.26%,
+    29.17% 96.46%, 27.08% 97.52%, 25.00% 98.35%, 22.92% 98.88%, 20.83% 99.05%,
+    18.75% 98.92%, 16.67% 98.52%, 14.58% 97.94%, 12.50% 97.21%, 10.42% 96.39%,
+    8.33% 95.55%, 6.25% 94.73%, 4.17% 94.00%, 2.08% 93.40%, 0.00% 93.00%
+  );
+}
+
+.photoEdge {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* placa del logo, como acento decorativo sobre la esquina de la foto */
+.mark {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  width: 62px;
+  height: 62px;
+  filter: drop-shadow(0 10px 18px rgba(102, 33, 83, 0.35));
+}
+
+.mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Texto ---------- */
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+.title {
+  margin: 0 0 1.4rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 3.6vw, 3rem);
+  line-height: 1.1;
+  color: var(--plum);
+}
+
+.text {
+  margin: 0 0 1.1rem;
+  max-width: 62ch;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #4b3a46;
+}
+
+.text:last-of-type {
+  margin-bottom: 1.9rem;
+}
+
+/* ---------- Estadísticas ---------- */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem 2.2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(102, 33, 83, 0.14);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.statValue {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+  color: var(--plum);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--teal-dark);
+  max-width: 16ch;
+}
+
+/* ---------- Onda al pie de la sección ---------- */
+.bottomWave {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 100%;
+  height: clamp(28px, 4vw, 46px);
+  opacity: 0.9;
+}
+
+.bottomWaveStroke {
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .stats {
+    gap: 1.2rem 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
