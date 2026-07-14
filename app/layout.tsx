@@ -4,6 +4,9 @@ import Nav from "../components/Navbar/Nav";
 import Hero from "../components/Hero/Hero";
 import Nosotros from "../components/Nosotros/Nosotros";
 import Misionvisionvalores from "../components/Misionvisionvalores/Misionvisionvalores"
+import Cifras from "../components/Cifras/Cifras";
+import Ocupacional from "../components/Ocupacional/Ocupacional"
+
 import "./globals.css";
 
 type LayoutProps = {
@@ -29,6 +32,8 @@ export default function RootLayout({ children }: LayoutProps) {
         <Hero />
         <Nosotros />
         <Misionvisionvalores />
+        <Cifras />
+        <Ocupacional />
         {children}
       </body>
     </html>

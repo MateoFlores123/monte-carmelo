@@ -1,0 +1,125 @@
+/* ---------- El "hueco": background-attachment: fixed hace que la
+   imagen no se desplace con el scroll, pero al ser el propio fondo
+   de ESTA sección (no una capa aparte a nivel de página), solo es
+   visible dentro de su alto — apenas termina la sección, termina
+   la imagen. Nada de esto se filtra al resto de la página. ---------- */
+.cifras {
+  position: relative;
+  padding: clamp(4.5rem, 9vw, 7.5rem) 1.5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  text-align: center;
+  /* sin overlay de color sobre la foto: esta sombra es lo único que
+     sostiene la legibilidad del texto blanco sobre la imagen */
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #8fe0d8; /* teal claro, legible directo sobre la foto */
+}
+
+.title {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.titleAccent {
+  color: #8fe0d8;
+}
+
+.divider {
+  width: 64px;
+  height: 3px;
+  margin: 1.8rem auto clamp(3rem, 6vw, 4.5rem);
+  border-radius: 999px;
+  background: var(--teal, #3aa59d);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem 1.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statValue {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  line-height: 1;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.statSuffix {
+  font-size: 0.55em;
+  font-weight: 600;
+  color: #8fe0d8;
+  margin-left: 0.1em;
+}
+
+.statLabel {
+  margin-top: 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8fe0d8;
+}
+
+.statText {
+  margin: 0.6rem 0 0;
+  max-width: 22ch;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 2.75rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* iOS Safari no soporta background-attachment: fixed (lo trata como
+     scroll normal), así que en pantallas chicas cae de forma natural
+     a un fondo que se mueve con la página — sigue viéndose bien */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statValue {
+    transition: none;
+  }
+}
