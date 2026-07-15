@@ -102,9 +102,12 @@ export default function Nav() {
         <div className={styles.hero} aria-hidden="true" />
 
         <div className={styles.bar}>
-          {/* Logo como imagen: */}
+          {/* Logo como imagen. El id="navLogoTarget" es el punto de
+              destino que usa Loader.jsx para calcular hacia dónde debe
+              "viajar" el logo cuando termina de cargar la página. */}
           <a href="#home" className={styles.logo} aria-label="Monte Carmelo, Centro Médico — Inicio">
             <Image
+              id="navLogoTarget"
               src="/logo.png"
               alt="Monte Carmelo"
               width={180}

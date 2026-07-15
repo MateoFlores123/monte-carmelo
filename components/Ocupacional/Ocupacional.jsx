@@ -76,27 +76,72 @@ export default function Ocupacional() {
       </svg>
 
       <div className={styles.inner}>
-        <header className={styles.header}>
-          <span className={styles.eyebrow}>Salud ocupacional</span>
-          <h2 className={styles.title}>Medicina Ocupacional</h2>
-          <p className={styles.text}>
-            En Centro Médico Monte Carmelo contamos con una Unidad de{" "}
-            <strong>Medicina Ocupacional</strong> activa desde el año{" "}
-            <strong>2008</strong>, especializada en la evaluación y
-            prevención de la salud de los trabajadores. Brindamos{" "}
-            <strong>Exámenes Médicos Ocupacionales (EMO)</strong> adaptados
-            al perfil y riesgos de cada puesto laboral.
-          </p>
-          <div className={styles.statRow}>
-            <span className={styles.stat}>
-              <span className={styles.statNum}>+15</span> años de experiencia
-            </span>
-            <span className={styles.stat}>
-              <span className={styles.statNum}>3</span> etapas de
-              acompañamiento
+        <div className={styles.headerGrid}>
+          <header className={styles.header}>
+            <span className={styles.eyebrow}>Salud ocupacional</span>
+            <h2 className={styles.title}>Medicina Ocupacional</h2>
+            <p className={styles.text}>
+              En Centro Médico Monte Carmelo contamos con una Unidad de{" "}
+              <strong>Medicina Ocupacional</strong> activa desde el año{" "}
+              <strong>2008</strong>, especializada en la evaluación y
+              prevención de la salud de los trabajadores. Brindamos{" "}
+              <strong>Exámenes Médicos Ocupacionales (EMO)</strong> adaptados
+              al perfil y riesgos de cada puesto laboral.
+            </p>
+            <div className={styles.statRow}>
+              <span className={styles.stat}>
+                <span className={styles.statNum}>+15</span> años de
+                experiencia
+              </span>
+              <span className={styles.stat}>
+                <span className={styles.statNum}>3</span> etapas de
+                acompañamiento
+              </span>
+            </div>
+          </header>
+
+          {/* Foto: mismo recurso visual que la sección Nosotros — borde
+              inferior ondulado + trazo teal, para que se sienta de la
+              misma familia. Cambia la url por tu foto real. */}
+          <div className={styles.media}>
+            <div
+              className={styles.photo}
+              style={{ backgroundImage: "url(/images/ocupacional.jpg)" }}
+              role="img"
+              aria-label="Evaluación médica ocupacional en Monte Carmelo"
+            />
+            <svg
+              className={styles.photoEdge}
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="ocupacionalEdgeFade" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="var(--teal)" stopOpacity="0" />
+                  <stop offset="16%" stopColor="var(--teal)" stopOpacity="0.9" />
+                  <stop offset="84%" stopColor="var(--teal)" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="var(--teal)" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M0.00,93.00 L2.08,93.40 L4.17,94.00 L6.25,94.73 L8.33,95.55 L10.42,96.39 L12.50,97.21 L14.58,97.94 L16.67,98.52 L18.75,98.92 L20.83,99.05 L22.92,98.88 L25.00,98.35 L27.08,97.52 L29.17,96.46 L31.25,95.26 L33.33,93.98 L35.42,92.70 L37.50,91.50 L39.58,90.46 L41.67,89.64 L43.75,89.13 L45.83,89.00 L47.92,89.25 L50.00,89.82 L52.08,90.63 L54.17,91.61 L56.25,92.68 L58.33,93.78 L60.42,94.82 L62.50,95.73 L64.58,96.45 L66.67,96.89 L68.75,96.99 L70.83,96.61 L72.92,95.84 L75.00,94.81 L77.08,93.64 L79.17,92.45 L81.25,91.37 L83.33,90.53 L85.42,90.05 L87.50,90.05 L89.58,90.55 L91.67,91.41 L93.75,92.45 L95.83,93.51 L97.92,94.41 L100.00,95.00"
+                fill="none"
+                stroke="url(#ocupacionalEdgeFade)"
+                strokeWidth="0.9"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            <span className={styles.badge}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z" />
+                <rect x="6" y="5" width="12" height="16" rx="2" />
+                <path d="M9 11l2 2 4-4" />
+              </svg>
+              Desde 2008
             </span>
           </div>
-        </header>
+        </div>
 
         {/* Hilo del cuidado: evaluamos → prevenimos → gestionamos */}
         <div className={styles.pathway}>

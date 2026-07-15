@@ -1,5 +1,6 @@
 import { Cormorant_Garamond } from "next/font/google";
 import { ReactNode } from "react";
+import Loader from "../components/Loader/Loader";
 import Nav from "../components/Navbar/Nav";
 import Hero from "../components/Hero/Hero";
 import Nosotros from "../components/Nosotros/Nosotros";
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="es" className={clinicFont.variable}>
       <body>
+        <Loader />
         <Nav />
         <Hero />
         <Nosotros />
