@@ -9,6 +9,7 @@ import Misionvisionvalores from "../components/Misionvisionvalores/Misionvisionv
 import Cifras from "../components/Cifras/Cifras";
 import Ocupacional from "../components/Ocupacional/Ocupacional"
 import Asistencial from "../components/Asistencial/Asistencial";
+import Especialidades from "../components/Especialidades/Especialidades";
 
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <Cifras />
         <Ocupacional />
         <Asistencial />
+        <Especialidades />
         {children}
       </body>
     </html>

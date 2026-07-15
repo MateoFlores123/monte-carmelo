@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 .hero {
-  /* Debe coincidir con --nav-h en Nav.module.css */
-  --nav-h: clamp(178px, 20vw, 208px);
   --plum: #662153;
   --plum-deep: #54173f;
   --teal: #3aa59d;
@@ -14,7 +12,6 @@
 
   position: relative;
   min-height: 100vh;
-  margin-top: calc(-1 * var(--nav-h));
   overflow: hidden;
   background: #ffffff;
   font-family: 'Montserrat', system-ui, sans-serif;
@@ -112,10 +109,9 @@
   position: absolute;
   inset: 0;
   display: flex;
-  margin-top: -100px;
   flex-direction: column;
   justify-content: center;
-  padding: calc(var(--nav-h) + clamp(1.25rem, 3vw, 2.25rem)) clamp(3.5rem, 9vw, 6.5rem)
+  padding: clamp(2rem, 5vw, 3rem) clamp(3.5rem, 9vw, 6.5rem)
     clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 6vw, 5rem);
   transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1);
   pointer-events: none;
@@ -287,7 +283,7 @@
     position: absolute;
     justify-content: flex-end;
     background: rgba(255, 255, 255, 0.94);
-    padding: calc(var(--nav-h) + 1.5rem) 1.5rem 2.5rem;
+    padding: 1.5rem 1.5rem 2.5rem;
   }
 
   .panelGlow {
@@ -309,7 +305,7 @@
 
   .dots {
     bottom: auto;
-    top: calc(var(--nav-h) + 0.75rem);
+    top: 0.75rem;
     right: 1.25rem;
   }
 }
