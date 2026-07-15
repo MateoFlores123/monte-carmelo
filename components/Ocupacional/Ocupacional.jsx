@@ -63,8 +63,8 @@ const STAGES = [
 // Logos de empresas: coloca los archivos en /public/empresas/ con estos
 // nombres (o cambia la lista por los nombres reales de tus archivos)
 const COMPANY_LOGOS = [
-  { file: "empresa-1.png", scale: 2 },
-  { file: "empresa-2.png", scale: 2 },
+  { file: "empresa-1.png", scale: 1 },
+  { file: "empresa-2.png", scale: 1 },
   { file: "empresa-3.png", scale: 1 },
   { file: "empresa-4.png", scale: 1 },
 ];
