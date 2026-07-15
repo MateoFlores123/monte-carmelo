@@ -1,0 +1,70 @@
+.bar {
+  --teal: #3aa59d;
+  --teal-dark: #2d857e;
+
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.75rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(44px, 5.4vw, 52px);
+  height: clamp(44px, 5.4vw, 52px);
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 8px 20px -6px rgba(45, 133, 126, 0.55);
+  opacity: 0;
+  transform: translateY(14px) scale(0.85);
+  animation: circleIn 0.5s ease forwards;
+  animation-delay: calc(var(--i, 0) * 0.09s + 0.2s);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes circleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.circle svg {
+  width: 46%;
+  height: 46%;
+}
+
+.circle:hover,
+.circle:focus-visible {
+  background: var(--teal-dark);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 12px 26px -6px rgba(45, 133, 126, 0.65);
+}
+
+@media (max-width: 480px) {
+  .bar {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circle {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: background 0.2s ease;
+  }
+
+  .circle:hover,
+  .circle:focus-visible {
+    transform: none;
+  }
+}

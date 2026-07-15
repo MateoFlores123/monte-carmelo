@@ -2,11 +2,13 @@ import { Cormorant_Garamond } from "next/font/google";
 import { ReactNode } from "react";
 import Loader from "../components/Loader/Loader";
 import Nav from "../components/Navbar/Nav";
+import Socialbar from "../components/Socialbar/Socialbar";
 import Hero from "../components/Hero/Hero";
 import Nosotros from "../components/Nosotros/Nosotros";
 import Misionvisionvalores from "../components/Misionvisionvalores/Misionvisionvalores"
 import Cifras from "../components/Cifras/Cifras";
 import Ocupacional from "../components/Ocupacional/Ocupacional"
+import Asistencial from "../components/Asistencial/Asistencial";
 
 import "./globals.css";
 
@@ -31,11 +33,13 @@ export default function RootLayout({ children }: LayoutProps) {
       <body>
         <Loader />
         <Nav />
+        <Socialbar />
         <Hero />
         <Nosotros />
         <Misionvisionvalores />
         <Cifras />
         <Ocupacional />
+        <Asistencial />
         {children}
       </body>
     </html>

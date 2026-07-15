@@ -1,4 +1,5 @@
 import styles from "./Ocupacional.module.css";
+import Image from "next/image";
 
 // Las tres etapas del cuidado ocupacional. El orden importa: primero se
 // evalúa, luego se previene, luego se gestiona la información — por eso
@@ -57,6 +58,15 @@ const STAGES = [
       "Información segura y confidencial",
     ],
   },
+];
+
+// Logos de empresas: coloca los archivos en /public/empresas/ con estos
+// nombres (o cambia la lista por los nombres reales de tus archivos)
+const COMPANY_LOGOS = [
+  { file: "empresa-1.png", scale: 2 },
+  { file: "empresa-2.png", scale: 2 },
+  { file: "empresa-3.png", scale: 1 },
+  { file: "empresa-4.png", scale: 1 },
 ];
 
 export default function Ocupacional() {
@@ -192,6 +202,36 @@ export default function Ocupacional() {
               </article>
             ))}
           </div>
+        </div>
+
+        {/* Panel compacto: empresas que confían + contacto, todo en una
+            sola franja para no alargar la página */}
+        <div className={styles.trustPanel}>
+          <div className={styles.trustLeft}>
+            <span className={styles.trustEyebrow}>Confían en nosotros</span>
+            <h3 className={styles.trustTitle}>
+              Empresas que confían en nosotros
+            </h3>
+            <div className={styles.logos}>
+              {COMPANY_LOGOS.map((logo) => (
+                <div key={logo.file} className={styles.logo}>
+                  <Image
+                    src={`/images/empresas/${logo.file}`}
+                    alt=""
+                    width={180}
+                    height={90}
+                    className={styles.logoImg}
+                    style={{ transform: `scale(${logo.scale})` }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <a href="#contacto" className={styles.trustCta}>
+            Contáctanos
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>

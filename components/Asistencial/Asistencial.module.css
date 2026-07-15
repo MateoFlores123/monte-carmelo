@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+.asistencial {
+  --plum: #662153;
+  --plum-deep: #54173f;
+  --teal: #3aa59d;
+  --teal-dark: #2d857e;
+  --lav: #f4ebf1;
+
+  position: relative;
+  background: #ffffff;
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+/* ---------- Banner con video recortado ---------- */
+.banner {
+  position: relative;
+  height: clamp(220px, 26vw, 320px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(102, 33, 83, 0.15);
+  border-bottom: 1px solid rgba(102, 33, 83, 0.15);
+}
+
+.bannerVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(84, 23, 63, 0.72) 0%,
+    rgba(84, 23, 63, 0.55) 50%,
+    rgba(84, 23, 63, 0.72) 100%
+  );
+}
+
+.bannerTitle {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* ---------- Contenido ---------- */
+.content {
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
+}
+
+.intro {
+  max-width: 68ch;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #4b3a46;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heading {
+  margin: 0 0 1.1rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 3.4vw, 2.7rem);
+  line-height: 1.12;
+  color: var(--plum);
+}
+
+.headingLine {
+  display: block;
+  color: var(--plum);
+}
+
+.desc {
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4b3a46;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--plum);
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2.2rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(84, 23, 63, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--plum-deep);
+  transform: translateY(-2px);
+}
+
+/* ---------- Imagen ---------- */
+.imageCol {
+  position: relative;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--lav);
+  box-shadow: 0 24px 48px rgba(84, 23, 63, 0.16);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .textCol {
+    order: 2;
+  }
+
+  .imageCol {
+    order: 1;
+  }
+
+  .intro {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+}

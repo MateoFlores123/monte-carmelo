@@ -213,37 +213,6 @@
   transform: scaleX(1);
 }
 
-/* ---------- Botón WhatsApp ---------- */
-.whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-top: -30px;
-  flex-shrink: 0;
-  background: var(--teal);
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  padding: 0.3rem 1.7rem;
-  border-radius: 999px;
-  box-shadow: 0 6px 16px rgba(45, 133, 126, 0.35);
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.whatsapp svg {
-  width: 20px;
-  height: 20px;
-}
-
-.whatsapp:hover,
-.whatsapp:focus-visible {
-  background: var(--teal-dark);
-  transform: translateY(-2px);
-}
-
 /* ---------- Rayito teal (acento a la derecha) ---------- */
 .accent {
   position: absolute;
@@ -283,10 +252,6 @@
   border-radius: 2px;
   background: var(--lav);
   transition: transform 0.25s ease, opacity 0.2s ease;
-}
-
-.whatsappMobile {
-  display: none;
 }
 
 @media (max-width: 860px) {
@@ -347,21 +312,6 @@
 
   .link:hover {
     background: var(--plum-deep);
-  }
-
-  .whatsappMobile {
-    display: block;
-    margin: 0.6rem clamp(1.25rem, 4vw, 3.5rem) 0;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    color: #fff;
-    background: var(--teal);
-    border-radius: 999px;
   }
 }
 

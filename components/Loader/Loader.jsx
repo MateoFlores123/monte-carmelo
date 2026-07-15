@@ -113,6 +113,7 @@ export default function Loader() {
             width={300}
             height={120}
             className={styles.logo}
+            priority
             />
         <span className={styles.dot} aria-hidden="true" />
       </div>
