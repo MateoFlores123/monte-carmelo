@@ -50,9 +50,11 @@ const SPECIALTIES = [
   },
 ];
 
-// A dónde lleva el botón circular "Ver más" (ej: una página con todas las
-// especialidades). Cámbialo por tu ruta real.
-const MORE_HREF = "#todas-las-especialidades";
+// "Ver más" ahora lleva a la página completa de especialidades
+// (app/especialidades/page.jsx) — como es un <a> normal (no <Link>),
+// hace una navegación completa del navegador, así que el Loader se
+// vuelve a reproducir solo al entrar.
+const MORE_HREF = "/especialidades";
 
 function ChevronIcon({ direction = "right" }) {
   return (
