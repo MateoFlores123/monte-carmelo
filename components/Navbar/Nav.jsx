@@ -67,8 +67,19 @@ const LINKS = [
   { label: "Contacto", href: "#contacto", Icon: IconContacto },
 ];
 
+const BOTTOM_LEFT = [
+  { label: "Nosotros", href: "#nosotros", Icon: IconNosotros },
+  { label: "Ocupacional", href: "#ocupacional", Icon: IconOcupacional },
+];
+const BOTTOM_RIGHT = [
+  { label: "Asistencial", href: "#asistencial", Icon: IconAsistencial },
+  { label: "Contacto", href: "#contacto", Icon: IconContacto },
+];
+
+
 // Debe coincidir con la duración de "height" en .header.covering (Nav.module.css)
 const WAVE_DURATION = 620;
+const MOBILE_QUERY = "(max-width: 860px)"
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -76,9 +87,31 @@ export default function Nav() {
   const [melting, setMelting] = useState(false);
   const busyRef = useRef(false);
 
+  function goToSection(href) {
+    const id = href.slice(1);
+    const el = document.getElementById(id);
+
+    if (!el) return;
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    history.replaceState(null, "", href);
+  }
+
   function handleSectionClick(e, href) {
     e.preventDefault();
     setOpen(false);
+
+    const isMobile =
+      typeof window !== "undefined" && window.matchMedia(MOBILE_QUERY).matches;
+
+    if (isMobile) {
+      goToSection(href);
+      return;
+    }
 
     if (busyRef.current) return; // evita clicks encimados mientras anima
     busyRef.current = true;
@@ -184,6 +217,52 @@ export default function Nav() {
           alto normal para que el contenido de la página no quede tapado
           debajo. Debe ser el primer elemento después de <Nav /> en tu página. */}
       <div className={styles.navSpacer} aria-hidden="true" />
+
+      <nav className={styles.bottomNav} aria-label="Menú principal móvil">
+        {BOTTOM_LEFT.map(({ label, href, Icon }) => (
+          <a
+            key={href}
+            href={href}
+            className={styles.bottomLink}
+            onClick={(e) => handleSectionClick(e, href)}
+          >
+            <span className={styles.bottomLinkIcon} aria-hidden="true">
+              <Icon />
+            </span>
+            {label}
+          </a>
+        ))}
+
+        <a
+          href="#home"
+          className={styles.bottomLogo}
+          aria-label="Monte Carmelo, Centro Médico — Inicio"
+          onClick={(e) => handleSectionClick(e, "#home")}
+        >
+          <Image
+            src="/logo.png"
+            alt="Monte Carmelo"
+            width={60}
+            height={60}
+            className={styles.bottomLogoImg}
+          />
+        </a>
+
+        {BOTTOM_RIGHT.map(({ label, href, Icon }) => (
+          <a
+            key={href}
+            href={href}
+            className={styles.bottomLink}
+            onClick={(e) => handleSectionClick(e, href)}
+          >
+            <span className={styles.bottomLinkIcon} aria-hidden="true">
+              <Icon />
+            </span>
+            {label}
+          </a>
+        ))}
+      </nav>
+      <div className={styles.bottomNavSpacer} aria-hidden="true" />
     </>
   );
 }
