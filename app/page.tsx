@@ -8,10 +8,12 @@ import Especialidades from "../components/Especialidades/Especialidades";
 import Galeria from "../components/Galeria/Galeria";
 import Contacto from "../components/Contacto/Contacto";
 import Footer from "../components/Footer/Footer";
+import Nav from "../components/Navbar/Nav"
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-[#EAEFF4]">
+      <Nav />
       <Hero />
       <Nosotros />
       <Misionvisionvalores />

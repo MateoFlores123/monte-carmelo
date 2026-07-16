@@ -134,7 +134,7 @@ export default function Galeria() {
                 fill
                 sizes="90vw"
                 className={styles.lightboxImg}
-                priority
+                
               />
             </div>
             <span className={styles.lightboxCaption}>{IMAGES[openIndex].label}</span>

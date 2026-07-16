@@ -1,7 +1,6 @@
 import { Cormorant_Garamond } from "next/font/google";
 import { ReactNode } from "react";
 import Loader from "../components/Loader/Loader";
-import Nav from "../components/Navbar/Nav";
 import Socialbar from "../components/Socialbar/Socialbar";
 
 import "./globals.css";
@@ -26,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps) {
     <html lang="es" className={clinicFont.variable}>
       <body>
         <Loader />
-        <Nav />
+        
 
         {/* Aquí Next.js pone el contenido de cada página: app/page.tsx
             para "/", app/especialidades/page.jsx para "/especialidades", etc. */}
