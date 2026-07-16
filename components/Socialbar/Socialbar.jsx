@@ -29,9 +29,9 @@ const IconTiktok = () => (
 );
 
 const SOCIALS = [
-  { name: "WhatsApp", href: "https://wa.me/51999999999", Icon: IconWhatsapp },
-  { name: "Instagram", href: "https://instagram.com/montecarmelocm", Icon: IconInstagram },
-  { name: "Facebook", href: "https://facebook.com/montecarmelocm", Icon: IconFacebook },
+  { name: "WhatsApp", href: "https://wa.me/51959635451", Icon: IconWhatsapp },
+  { name: "Instagram", href: "https://instagram.com/montecarmelo_med", Icon: IconInstagram },
+  { name: "Facebook", href: "https://facebook.com/CMMonteCarmelo", Icon: IconFacebook },
   { name: "TikTok", href: "https://tiktok.com/@montecarmelocm", Icon: IconTiktok },
 ];
 

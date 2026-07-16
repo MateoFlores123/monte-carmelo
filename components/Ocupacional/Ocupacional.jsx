@@ -124,7 +124,7 @@ export default function Ocupacional() {
             </p>
             <div className={styles.statRow}>
               <span className={styles.stat}>
-                <span className={styles.statNum}>+15</span> años de
+                <span className={styles.statNum}>+33</span> años de
                 experiencia
               </span>
               <span className={styles.stat}>

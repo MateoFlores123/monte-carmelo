@@ -267,22 +267,56 @@
 @media (max-width: 900px) {
   .hero {
     --panel-w: 100%;
+    /* el nav va abajo, no arriba: el hero no reserva espacio para nav
+       fijo y ocupa toda la pantalla pegado al borde superior */
     min-height: 100vh;
+    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
+    margin-top: 0;
+  }
+
+  .carousel {
+    /* la foto cubre todo el hero de borde a borde */
+    inset: 0;
+  }
+
+  .slide {
+    /* en desktop el tamaño/posición de cada foto viene por inline style
+       (pensado para el recorte del panel); en móvil forzamos cover para
+       que cada foto llene toda la pantalla, sin franjas ni cortes raros */
+    background-size: cover !important;
+    background-position: center !important;
   }
 
   .panel {
-    position: relative;
-    height: auto;
-    min-height: 62vh;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
     clip-path: none;
     background: transparent;
+    pointer-events: none;
   }
 
   .textSlide {
+    /* tarjeta oscura pegada abajo, solo detrás del texto, para que las
+       letras no se pierdan sin importar qué tan clara sea la foto */
     position: absolute;
+    inset: auto 0 0 0;
+    top: auto;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    background: rgba(255, 255, 255, 0.94);
-    padding: 1.5rem 1.5rem 2.5rem;
+    padding: 3rem 1.5rem calc(2.25rem + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(
+      to top,
+      rgba(18, 7, 15, 0.96) 0%,
+      rgba(18, 7, 15, 0.88) 42%,
+      rgba(18, 7, 15, 0.4) 78%,
+      rgba(18, 7, 15, 0) 100%
+    );
   }
 
   .panelGlow {
@@ -293,13 +327,25 @@
     display: none;
   }
 
-  .carousel {
-    /* en móvil la foto queda de fondo completo, con el panel semi-opaco encima */
-    inset: 0;
+  .bottomWave {
+    display: none;
+  }
+
+  .eyebrow {
+    color: var(--teal);
   }
 
   .title {
     font-size: clamp(2rem, 8vw, 2.6rem);
+    color: #ffffff;
+  }
+
+  .titleLine {
+    color: var(--teal);
+  }
+
+  .text {
+    color: rgba(255, 255, 255, 0.94);
   }
 
   .dots {

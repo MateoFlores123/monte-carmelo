@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
 .section {
-  /* Misma paleta que Hero.module.css, para que ambas secciones se sientan
-     de la misma familia */
   --plum: #662153;
   --plum-deep: #54173f;
   --teal: #3aa59d;
@@ -16,7 +14,6 @@
   font-family: 'Montserrat', system-ui, sans-serif;
 }
 
-/* Costura con el Hero: retoma el blanco de su bottomWave */
 .topWave {
   position: absolute;
   left: 0;
@@ -36,7 +33,6 @@
   padding: 0 clamp(1.5rem, 5vw, 3rem);
 }
 
-/* ---------- Header: texto + foto ---------- */
 .headerGrid {
   display: grid;
   grid-template-columns: 1fr minmax(240px, 400px);
@@ -103,7 +99,6 @@
   color: var(--teal-dark);
 }
 
-/* ---------- Foto del header ---------- */
 .media {
   position: relative;
 }
@@ -140,7 +135,6 @@
   pointer-events: none;
 }
 
-/* pequeña placa flotante sobre la foto, con el año de inicio */
 .badge {
   position: absolute;
   bottom: -16px;
@@ -169,7 +163,6 @@
   stroke-linejoin: round;
 }
 
-/* ---------- Hilo del cuidado (sin cambios) ---------- */
 .pathway {
   position: relative;
 }
@@ -304,7 +297,6 @@
   background: var(--teal);
 }
 
-/* ---------- Panel de confianza: compacto, claro, con acentos ---------- */
 .trustPanel {
   position: relative;
   margin-top: clamp(2.25rem, 4.5vw, 3.25rem);
@@ -320,7 +312,6 @@
   overflow: hidden;
 }
 
-/* acento superior, ahora con más peso de morado */
 .trustPanel::before {
   content: "";
   position: absolute;
@@ -331,7 +322,6 @@
   background: linear-gradient(90deg, var(--plum) 0%, var(--plum) 55%, var(--teal) 100%);
 }
 
-/* mancha suave morada, para que el color se sienta sin ser un bloque sólido */
 .trustPanel::after {
   content: "";
   position: absolute;
@@ -369,8 +359,6 @@
   max-width: 32ch;
 }
 
-/* Logos sueltos: sin círculo, sin fondo ni borde — solo la marca, con
-   un leve grayscale que se levanta a color en hover */
 .logos {
   display: flex;
   flex-wrap: wrap;
@@ -443,11 +431,14 @@
 
   .media {
     max-width: 420px;
-    margin: 0 auto;
+    margin: 2rem auto 1.75rem;
   }
 
   .badge {
-    left: 16px;
+    left: 12px;
+    bottom: 12px;
+    font-size: 0.72rem;
+    padding: 0.5rem 0.85rem;
   }
 
   .cards {
@@ -488,7 +479,6 @@
   }
 }
 
-/* ---------- Foto interactiva: pulso "oprimeme" ---------- */
 .photoButton {
   position: relative;
   display: block;
@@ -500,7 +490,6 @@
   text-align: left;
 }
 
-/* halo que pulsa alrededor de la foto */
 .photoButton::before {
   content: "";
   position: absolute;
@@ -527,7 +516,6 @@
   }
 }
 
-/* leve respiración de la foto misma */
 .photoButton .photo {
   animation: photoBreathe 2.6s ease-in-out infinite;
 }
@@ -542,7 +530,6 @@
   }
 }
 
-/* pastilla "Toca para ver más" */
 .tapHint {
   position: absolute;
   right: -14px;
@@ -587,7 +574,6 @@
   }
 }
 
-/* ---------- Galería overlay: cascada de 6 imágenes ---------- */
 .galleryOverlay {
   position: fixed;
   inset: 0;
@@ -614,7 +600,7 @@
   position: absolute;
   top: clamp(5.5rem, 4vw + 4rem, 6.5rem);
   right: clamp(1rem, 3vw, 2rem);
-  z-index: 20; /* por encima de TODAS las imágenes de la galería */
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -663,7 +649,6 @@
   aspect-ratio: 4 / 5;
 }
 
-/* Horizontal: paisaje, más ancha y más baja */
 .galleryImgHorizontal {
   width: clamp(220px, 28vw, 400px);
   aspect-ratio: 5 / 3.4;

@@ -52,6 +52,7 @@
   .bar {
     flex-direction: column;
     gap: 0.55rem;
+    margin-bottom: 60px;
   }
 }
 

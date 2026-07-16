@@ -14,7 +14,7 @@ const SLIDES = [
     titleLine: "Centro Médico",
     text: "Atención médica ocupacional y asistencial con calidez humana y los más altos estándares de calidad.",
     ctaLabel: "Agenda tu cita",
-    ctaHref: "#asistencial",
+    ctaHref: "#contacto",
     ctaGhostLabel: "Conócenos",
     ctaGhostHref: "#nosotros",
   },

@@ -71,9 +71,9 @@ const CONTACTS = {
     Icon: IconOcupacional,
     eyebrow: "Salud en el trabajo",
     title: "Medicina Ocupacional",
-    email: "ocupacional@montecarmelo.pe",
+    email: "ocupacional.comercial@montecarmelocm.com",
     phone: "+51 912 345 678",
-    phoneHref: "+51912345678",
+    phoneHref: "+51991437584",
     mapQuery: "Centro Médico Monte Carmelo, Arequipa",
   },
 };

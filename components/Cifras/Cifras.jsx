@@ -6,9 +6,9 @@ import styles from "./Cifras.module.css";
 // "value" es el número final, "suffix" es lo que se pega después
 // (ej. "+", "%", "m²") sin que se anime.
 const STATS = [
-  { value: 128, suffix: "", label: "Años", text: "De trayectoria cuidando la salud de nuestra comunidad" },
-  { value: 45, suffix: "k+", label: "Pacientes", text: "Atendidos con calidez humana cada año" },
-  { value: 60, suffix: "+", label: "Especialistas", text: "Formando un equipo médico multidisciplinario" },
+  { value: 33, suffix: "", label: "Años", text: "De trayectoria cuidando la salud de nuestra comunidad" },
+  { value: 10, suffix: "k+", label: "Pacientes", text: "Atendidos con calidez humana cada año" },
+  { value: 28, suffix: "+", label: "Especialidades", text: "Formando un equipo médico multidisciplinario" },
   { value: 98, suffix: "%", label: "Satisfacción", text: "De pacientes recomienda nuestra atención" },
 ];
 

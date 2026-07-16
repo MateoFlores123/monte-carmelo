@@ -240,7 +240,7 @@ export default function Nav() {
           onClick={(e) => handleSectionClick(e, "#home")}
         >
           <Image
-            src="/logo.png"
+            src="/logo-fondo.png"
             alt="Monte Carmelo"
             width={60}
             height={60}
@@ -262,7 +262,6 @@ export default function Nav() {
           </a>
         ))}
       </nav>
-      <div className={styles.bottomNavSpacer} aria-hidden="true" />
     </>
   );
 }
