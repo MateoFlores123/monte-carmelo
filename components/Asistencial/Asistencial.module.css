@@ -59,25 +59,20 @@
 
 /* ---------- Contenido ---------- */
 .content {
-  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
 }
 
 .intro {
   max-width: 68ch;
   margin: 0 auto clamp(2.5rem, 5vw, 4rem);
-  text-align: center;
-  font-size: 1.08rem;
-  line-height: 1.7;
-  color: #4b3a46;
+  padding-right: clamp(1.5rem, 6vw, 5rem); /* el intro sigue sin tocar el borde */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(320px, 560px) 1fr;
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-  max-width: 1180px;
-  margin: 0 auto;
+  align-items: stretch;
 }
 
 .textCol {
@@ -132,20 +127,107 @@
 /* ---------- Imagen ---------- */
 .imageCol {
   position: relative;
+  height: 100%;
+  min-height: 380px;
 }
 
 .image {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  min-height: 380px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 6px 0 0 6px;
   background: var(--lav);
   box-shadow: 0 24px 48px rgba(84, 23, 63, 0.16);
 }
 
+.asistencial {
+  --plum: #662153;
+  --plum-deep: #54173f;
+  --teal: #3aa59d;
+  --teal-dark: #2d857e;
+  --lav: #f4ebf1;
+
+  position: relative;
+  background: #ffffff;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  overflow: hidden; /* evita que la marca de agua se desborde */
+}
+
+.emphasisLine {
+  margin: 0 0 1.4rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--teal);
+  font-size: 0.98rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--teal-dark);
+}
+
+.highlight {
+  background: none;
+  color: var(--plum-deep);
+  font-weight: 800;
+  position: relative;
+  padding: 0 0.12em;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.08em;
+  height: 0.36em;
+  background: rgba(58, 165, 157, 0.4);
+  z-index: -1;
+  border-radius: 2px;
+}
+
+/* ---------- Marca de agua del logo ---------- */
+.watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-color: rgba(102, 33, 83, 0.03); /* gris-plum tenue */
+
+  -webkit-mask-image: url('/logo-fondo.png'); /* tu logo blanco */
+  mask-image: url('/logo-fondo.png');
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+  -webkit-mask-size: 150px 150px;
+  mask-size: 150px 150px;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+}
+
+/* El banner ya tiene su propio fondo (video), así que va por encima */
+.banner {
+  position: relative;
+  z-index: 1;
+  /* ...resto igual... */
+}
+
+/* El contenido también va por encima de la marca de agua */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
+}
+
+
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+
+  .content {
+    padding-right: clamp(1.5rem, 6vw, 5rem); /* restaura padding simétrico */
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }
@@ -156,10 +238,12 @@
 
   .imageCol {
     order: 1;
+    min-height: 260px;
   }
 
   .intro {
     text-align: left;
+    padding-right: 0;
   }
 }
 

@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useCallback } from "react";
 import styles from "./Asistencial.module.css";
+import Image from "next/image";
 
 // El archivo de video dura 45s, pero el banner solo debe reproducir
 // el fragmento entre estos segundos (6s–20s), en loop.
@@ -28,6 +29,7 @@ export default function Asistencial() {
 
   return (
     <section id="asistencial" className={styles.asistencial}>
+      <div className={styles.watermark} aria-hidden="true" />
       {/* Banner superior: título sobre el fragmento de video en loop */}
       <div className={styles.banner}>
         <video
@@ -56,12 +58,21 @@ export default function Asistencial() {
 
         <div className={styles.grid}>
           <div className={styles.textCol}>
+            <span className={styles.badge}>
+              
+              Primero y único en su categoría
+            </span>
+
             <h3 className={styles.heading}>
-              Primer centro de
-              <span className={styles.headingLine}>
-                investigación oncológico
-              </span>
+              Primer y <mark className={styles.highlight}>único</mark> centro de
+              <span className={styles.headingLine}>investigación oncológica</span>
             </h3>
+
+            <p className={styles.emphasisLine}>
+              No existe otro centro con este enfoque de investigación oncológica
+              en la región.
+            </p>
+
             <p className={styles.desc}>
               El Primer Centro de Investigación Oncológica, dirigido por el
               Dr. Renzo Álvarez Barreda, Médico Oncólogo especialista, tiene
@@ -76,9 +87,11 @@ export default function Asistencial() {
           </div>
 
           <div className={styles.imageCol}>
-            <img
-              src="/images/asistencial-oncologia.jpg" // reemplaza por tu imagen
+            <Image
+              src="/images/asistencial/oncologia.jpg"
               alt="Centro de Investigación Oncológica"
+              width={600}
+              height={400}
               className={styles.image}
             />
           </div>

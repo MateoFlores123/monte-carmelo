@@ -27,8 +27,7 @@
 .slide {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
   transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1);
 }
 

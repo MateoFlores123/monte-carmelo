@@ -7,6 +7,8 @@ import styles from "./Hero.module.css";
 const SLIDES = [
   {
     img: "/images/hero-1.jpg",
+    imgPosition: "185% 40%",
+    imgSize: "85% auto",
     eyebrow: "Bienvenido a",
     title: "Monte Carmelo",
     titleLine: "Centro Médico",
@@ -18,6 +20,7 @@ const SLIDES = [
   },
   {
     img: "/images/hero-2.jpg",
+    imgPosition: "117% 40%",
     eyebrow: "Salud ocupacional",
     title: "Cuidamos",
     titleLine: "a tu equipo",
@@ -29,6 +32,8 @@ const SLIDES = [
   },
   {
     img: "/images/hero-3.jpg",
+    imgPosition: "100% center", // más hacia la izquierda
+    imgSize: "80% auto",
     eyebrow: "Atención asistencial",
     title: "Un equipo",
     titleLine: "para tu salud",
@@ -103,7 +108,11 @@ export default function Hero() {
           <div
             key={slide.img}
             className={`${styles.slide} ${slotFor(i)}`}
-            style={{ backgroundImage: `url(${slide.img})` }}
+            style={{
+              backgroundImage: `url(${slide.img})`,
+              backgroundPosition: slide.imgPosition || "center",
+              backgroundSize: slide.imgSize || "cover",
+            }}
           />
         ))}
       </div>

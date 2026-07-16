@@ -1,5 +1,16 @@
+"use client";
+import { useState, useEffect } from "react";
 import styles from "./Ocupacional.module.css";
 import Image from "next/image";
+
+const GALLERY_IMAGES = [
+  { src: "/images/ocupacional/galeria-1.jpg", top: "4%",  left: "2%",  rotate: "-7deg", orientation: "vertical" },
+  { src: "/images/ocupacional/galeria-2.jpg", top: "8%",  left: "26%", rotate: "5deg",  orientation: "horizontal" },
+  { src: "/images/ocupacional/galeria-3.jpg", top: "2%",  left: "52%", rotate: "-4deg", orientation: "vertical" },
+  { src: "/images/ocupacional/galeria-4.jpg", top: "38%", left: "12%", rotate: "6deg",  orientation: "horizontal" },
+  { src: "/images/ocupacional/galeria-5.jpg", top: "42%", left: "38%", rotate: "-6deg", orientation: "vertical" },
+  { src: "/images/ocupacional/galeria-6.jpg", top: "34%", left: "64%", rotate: "3deg",  orientation: "horizontal" },
+];
 
 // Las tres etapas del cuidado ocupacional. El orden importa: primero se
 // evalúa, luego se previene, luego se gestiona la información — por eso
@@ -70,6 +81,19 @@ const COMPANY_LOGOS = [
 ];
 
 export default function Ocupacional() {
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  useEffect(() => {
+    if (!galleryOpen) return;
+    document.body.style.overflow = "hidden";
+    function handleKey(e) {
+      if (e.key === "Escape") setGalleryOpen(false);
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [galleryOpen]);
   return (
     <section id="ocupacional" className={styles.section}>
       {/* Costura con el Hero: retoma el blanco de su bottomWave */}
@@ -114,42 +138,67 @@ export default function Ocupacional() {
               inferior ondulado + trazo teal, para que se sienta de la
               misma familia. Cambia la url por tu foto real. */}
           <div className={styles.media}>
-            <div
-              className={styles.photo}
-              style={{ backgroundImage: "url(/images/ocupacional.jpg)" }}
-              role="img"
-              aria-label="Evaluación médica ocupacional en Monte Carmelo"
-            />
-            <svg
-              className={styles.photoEdge}
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              aria-hidden="true"
+            <button
+              type="button"
+              className={styles.photoButton}
+              onClick={() => setGalleryOpen(true)}
+              onMouseEnter={() => {
+                GALLERY_IMAGES.forEach((img) => {
+                  const preload = new window.Image();
+                  preload.src = img.src;
+                });
+              }}
+              aria-label="Ver galería de imágenes de medicina ocupacional"
             >
-              <defs>
-                <linearGradient id="ocupacionalEdgeFade" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="var(--teal)" stopOpacity="0" />
-                  <stop offset="16%" stopColor="var(--teal)" stopOpacity="0.9" />
-                  <stop offset="84%" stopColor="var(--teal)" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="var(--teal)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M0.00,93.00 L2.08,93.40 L4.17,94.00 L6.25,94.73 L8.33,95.55 L10.42,96.39 L12.50,97.21 L14.58,97.94 L16.67,98.52 L18.75,98.92 L20.83,99.05 L22.92,98.88 L25.00,98.35 L27.08,97.52 L29.17,96.46 L31.25,95.26 L33.33,93.98 L35.42,92.70 L37.50,91.50 L39.58,90.46 L41.67,89.64 L43.75,89.13 L45.83,89.00 L47.92,89.25 L50.00,89.82 L52.08,90.63 L54.17,91.61 L56.25,92.68 L58.33,93.78 L60.42,94.82 L62.50,95.73 L64.58,96.45 L66.67,96.89 L68.75,96.99 L70.83,96.61 L72.92,95.84 L75.00,94.81 L77.08,93.64 L79.17,92.45 L81.25,91.37 L83.33,90.53 L85.42,90.05 L87.50,90.05 L89.58,90.55 L91.67,91.41 L93.75,92.45 L95.83,93.51 L97.92,94.41 L100.00,95.00"
-                fill="none"
-                stroke="url(#ocupacionalEdgeFade)"
-                strokeWidth="0.9"
-                vectorEffect="non-scaling-stroke"
-              />
-            </svg>
-            <span className={styles.badge}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z" />
-                <rect x="6" y="5" width="12" height="16" rx="2" />
-                <path d="M9 11l2 2 4-4" />
+              <div className={styles.photo}>
+                <Image
+                  src="/images/ocupacional.jpg"
+                  alt="Evaluación médica ocupacional en Monte Carmelo"
+                  fill
+                  sizes="(max-width: 880px) 90vw, 400px"
+                  style={{ objectFit: "cover" }}
+                  quality={90} priority
+                />
+            </div>
+              <svg
+                className={styles.photoEdge}
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="ocupacionalEdgeFade" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="var(--teal)" stopOpacity="0" />
+                    <stop offset="16%" stopColor="var(--teal)" stopOpacity="0.9" />
+                    <stop offset="84%" stopColor="var(--teal)" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="var(--teal)" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M0.00,93.00 L2.08,93.40 L4.17,94.00 L6.25,94.73 L8.33,95.55 L10.42,96.39 L12.50,97.21 L14.58,97.94 L16.67,98.52 L18.75,98.92 L20.83,99.05 L22.92,98.88 L25.00,98.35 L27.08,97.52 L29.17,96.46 L31.25,95.26 L33.33,93.98 L35.42,92.70 L37.50,91.50 L39.58,90.46 L41.67,89.64 L43.75,89.13 L45.83,89.00 L47.92,89.25 L50.00,89.82 L52.08,90.63 L54.17,91.61 L56.25,92.68 L58.33,93.78 L60.42,94.82 L62.50,95.73 L64.58,96.45 L66.67,96.89 L68.75,96.99 L70.83,96.61 L72.92,95.84 L75.00,94.81 L77.08,93.64 L79.17,92.45 L81.25,91.37 L83.33,90.53 L85.42,90.05 L87.50,90.05 L89.58,90.55 L91.67,91.41 L93.75,92.45 L95.83,93.51 L97.92,94.41 L100.00,95.00"
+                  fill="none"
+                  stroke="url(#ocupacionalEdgeFade)"
+                  strokeWidth="0.9"
+                  vectorEffect="non-scaling-stroke"
+                />
               </svg>
-              Desde 2008
-            </span>
+              <span className={styles.badge}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z" />
+                  <rect x="6" y="5" width="12" height="16" rx="2" />
+                  <path d="M9 11l2 2 4-4" />
+                </svg>
+                Desde 2008
+              </span>
+              <span className={styles.tapHint}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 11.5V7a2 2 0 0 1 4 0v4" />
+                  <path d="M13 9V6a2 2 0 0 1 4 0v5" />
+                  <path d="M17 10a2 2 0 0 1 4 0v4c0 4-3 7-7 7h-1c-3.5 0-5-1.2-6.5-3.5L4 13.8c-.6-.9-.3-1.9.6-2.3.8-.4 1.7-.1 2.2.6L9 15" />
+                </svg>
+                Toca para ver más
+              </span>
+            </button>
           </div>
         </div>
 
@@ -234,6 +283,48 @@ export default function Ocupacional() {
           </a>
         </div>
       </div>
+
+      {galleryOpen && (
+        <div
+          className={styles.galleryOverlay}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Galería de imágenes"
+          onClick={() => setGalleryOpen(false)}
+        >
+          <button
+            type="button"
+            className={styles.galleryClose}
+            onClick={() => setGalleryOpen(false)}
+            aria-label="Cerrar galería"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+
+          <div className={styles.galleryStage} onClick={(e) => e.stopPropagation()}>
+            {GALLERY_IMAGES.map((img, i) => (
+              <div
+                key={img.src}
+                className={`${styles.galleryImg} ${
+                  img.orientation === "horizontal" ? styles.galleryImgHorizontal : styles.galleryImgVertical
+                }`}
+                style={{ top: img.top, left: img.left, "--rot": img.rotate, "--i": i, zIndex: i + 1 }}
+              >
+                <Image
+                  src={img.src}
+                  alt=""
+                  fill
+                  sizes="(max-width: 700px) 45vw, 25vw"
+                  style={{ objectFit: "cover" }}
+                  quality={88}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

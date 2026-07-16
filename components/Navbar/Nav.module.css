@@ -8,6 +8,8 @@
   --teal-soft: #7fd0c8;
   --lav: #f4ebf1;
   --nav-h: clamp(60px, 6vw, 74px);
+  --logo-size: clamp(100px, 16vw, 150px); 
+  --line-start: calc(var(--logo-size) + 20px); 
 
   position: fixed;
   top: 0;
@@ -135,7 +137,7 @@
 
 .bar {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   height: 100%;
   display: flex;
   align-items: center;
@@ -146,10 +148,10 @@
 /* ---------- Doble línea inferior ---------- */
 .borderLine {
   position: absolute;
-  left: clamp(120px, 13vw, 155px);
+  left: var(--line-start);              /*  antes: clamp(120px, 13vw, 155px) */
   bottom: 0;
   z-index: 1;
-  width: calc(100% - clamp(120px, 13vw, 155px));
+  width: calc(100% - var(--line-start)); /*  antes: calc(100% - clamp(...)) */
   height: 2px;
   background: var(--teal);
   transition: opacity 0.3s ease;
@@ -157,14 +159,15 @@
 
 .waveLine {
   position: absolute;
-  left: clamp(120px, 13vw, 155px);
+  left: var(--line-start);               /*  antes: clamp(120px, 13vw, 155px) */
   bottom: -14px;
   z-index: 1;
-  width: calc(100% - clamp(120px, 13vw, 155px));
+  width: calc(100% - var(--line-start));  /*  antes: calc(100% - clamp(...)) */
   height: 24px;
   opacity: 0.85;
   transition: opacity 0.3s ease;
 }
+
 
 .header.covering .borderLine,
 .header.covering .waveLine {
@@ -187,8 +190,8 @@
   left: 0;
   top: 100%;
   transform: translateY(-50%);
-  width: clamp(150px, 16vw, 140px);
-  height: clamp(150px, 16vw, 140px);
+  width: var(--logo-size);  
+  height: var(--logo-size); 
   border-radius: 50%;
   background: var(--plum);
   border: 5px solid #ffffff;
@@ -309,6 +312,8 @@
 @media (max-width: 860px) {
   .header {
     --nav-h: 46px;
+    --logo-size: 100px;                       /* 👈 mismo valor que antes */
+    --line-start: calc(var(--logo-size) + 14px); /* 👈 se recalcula solo */
   }
 
   .navSpacer {
