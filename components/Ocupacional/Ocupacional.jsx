@@ -157,7 +157,7 @@ export default function Ocupacional() {
                   fill
                   sizes="(max-width: 880px) 90vw, 400px"
                   style={{ objectFit: "cover" }}
-                  quality={90} priority
+                  priority
                 />
             </div>
               <svg
@@ -318,7 +318,7 @@ export default function Ocupacional() {
                   fill
                   sizes="(max-width: 700px) 45vw, 25vw"
                   style={{ objectFit: "cover" }}
-                  quality={88}
+                  priority
                 />
               </div>
             ))}

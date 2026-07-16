@@ -32,7 +32,7 @@ const SLIDES = [
   },
   {
     img: "/images/hero-3.jpg",
-    imgPosition: "100% center", // más hacia la izquierda
+    imgPosition: "150% center", // más hacia la izquierda
     imgSize: "80% auto",
     eyebrow: "Atención asistencial",
     title: "Un equipo",

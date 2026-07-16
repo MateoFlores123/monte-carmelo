@@ -5,6 +5,9 @@ import Cifras from "../components/Cifras/Cifras";
 import Ocupacional from "../components/Ocupacional/Ocupacional";
 import Asistencial from "../components/Asistencial/Asistencial";
 import Especialidades from "../components/Especialidades/Especialidades";
+import Galeria from "../components/Galeria/Galeria";
+import Contacto from "../components/Contacto/Contacto";
+import Footer from "../components/Footer/Footer";
 
 export default function Page() {
   return (
@@ -16,8 +19,10 @@ export default function Page() {
       <Ocupacional />
       <Asistencial />
       <Especialidades />
+      <Galeria />
+      <Contacto />
+      <Footer />
 
-      {/* Aquí seguirán las próximas secciones: galería, contacto, etc. */}
     </main>
   );
 }

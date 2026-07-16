@@ -1,10 +1,8 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import styles from "./Especialidades.module.css";
+import Image from "next/image";
 
-// Cada especialidad trae su imagen de portada (la que se ve en la tarjeta)
-// y una galería propia para el carrusel que aparece al abrir la tarjeta.
-// Reemplaza las rutas e ideas de texto por tu contenido real.
 const SPECIALTIES = [
   {
     id: "oncologia",
@@ -13,11 +11,11 @@ const SPECIALTIES = [
       "Brindamos atención especializada en la prevención, diagnóstico y tratamiento",
     fullDesc:
       "Contamos con un equipo de oncólogos especialistas que acompañan al paciente en cada etapa: prevención, diagnóstico temprano, tratamiento y seguimiento integral, siempre con calidez humana y los más altos estándares de calidad.",
-    cover: "/images/especialidades/oncologia-1.jpg",
+    cover: "/images/especialidades/oncologia/1.jpg",
     gallery: [
-      "/images/especialidades/oncologia-1.jpg",
-      "/images/especialidades/oncologia-2.jpg",
-      "/images/especialidades/oncologia-3.jpg",
+      "/images/especialidades/oncologia/1.jpg",
+      "/images/especialidades/oncologia/2.jpg",
+      "/images/especialidades/oncologia/3.jpg",
     ],
   },
   {
@@ -27,33 +25,71 @@ const SPECIALTIES = [
       "Brindamos evaluación, diagnóstico y tratamiento de enfermedades respiratorias cuidando la salud pulmonar",
     fullDesc:
       "Evaluamos y tratamos enfermedades respiratorias con equipamiento moderno, enfocados en cuidar la salud pulmonar de nuestros pacientes a través de un diagnóstico preciso y un seguimiento cercano.",
-    cover: "/images/especialidades/neumologia-1.jpg",
+    cover: "/images/especialidades/neumologia/1.jpg",
     gallery: [
-      "/images/especialidades/neumologia-1.jpg",
-      "/images/especialidades/neumologia-2.jpg",
-      "/images/especialidades/neumologia-3.jpg",
+      "/images/especialidades/neumologia/1.jpg",
+      "/images/especialidades/neumologia/2.jpg",
+      "/images/especialidades/neumologia/3.jpg",
     ],
   },
   {
     id: "cardiologia",
-    name: "Cardiología",
+    name: "Endocrinología",
     shortDesc:
-      "Evaluamos y cuidamos la salud de tu corazón con diagnóstico oportuno y tratamiento personalizado",
+      "Hacemos evaluación y seguimiento de enfermedades del sitema hormonal y metabólico.",
     fullDesc:
-      "Nuestro equipo de cardiología ofrece evaluación integral, diagnóstico oportuno y tratamiento personalizado para el cuidado de la salud cardiovascular, acompañando al paciente con seguimiento continuo.",
-    cover: "/images/especialidades/cardiologia-1.jpg",
+      "Nuestro equipo de endocrinología ofrece evaluación integral, diagnóstico oportuno y tratamiento personalizado para el cuidado de la salud, acompañando al paciente con seguimiento continuo.",
+    cover: "/images/especialidades/endocrinologia/1.jpg",
     gallery: [
-      "/images/especialidades/cardiologia-1.jpg",
-      "/images/especialidades/cardiologia-2.jpg",
-      "/images/especialidades/cardiologia-3.jpg",
+      "/images/especialidades/endocrinologia/1.jpg",
+      "/images/especialidades/endocrinologia/2.jpg",
+      "/images/especialidades/endocrinologia/3.jpg",
+    ],
+  },
+  {
+    id: "ozonoterapia",
+    name: "Ozonoterapia",
+    shortDesc:
+      "Brindamos terapia médica orientada al bienestar y acompañamiento integral del paciente",
+    fullDesc:
+      "Brindamos terapia médica orientada al bienestar y acompañamiento integral del paciente, aplicando protocolos seguros y personalizados según cada caso.",
+    cover: "/images/especialidades/ozonoterapia/1.jpg",
+    gallery: [
+      "/images/especialidades/ozonoterapia/1.jpg",
+      "/images/especialidades/ozonoterapia/2.jpg",
+      "/images/especialidades/ozonoterapia/3.jpg",
+    ],
+  },
+  {
+    id: "terapia-sueno",
+    name: "Terapia del Sueño",
+    shortDesc:
+      "Evaluamos y tratamos trastornos del sueño promoviendo un descanso reparador",
+    fullDesc:
+      "Evaluamos y tratamos trastornos del sueño promoviendo un descanso reparador como parte fundamental de la salud, con un enfoque integral y seguimiento personalizado.",
+    cover: "/images/especialidades/terapia/1.jpg",
+    gallery: [
+      "/images/especialidades/terapia/1.jpg",
+      "/images/especialidades/terapia/sueno-2.jpg",
+      "/images/especialidades/terapia/sueno-3.jpg",
+    ],
+  },
+  {
+    id: "oftalmologia",
+    name: "Oftalmología",
+    shortDesc:
+      "Realizamos evaluaciones oftalmológicas orientadas al cuidado integral de la visión",
+    fullDesc:
+      "Realizamos evaluaciones oftalmológicas orientadas al cuidado integral de la visión y la detección temprana de alteraciones visuales, con equipamiento especializado.",
+    cover: "/images/especialidades/oftalmologia/1.jpg",
+    gallery: [
+      "/images/especialidades/oftalmologia/1.jpg",
+      "/images/especialidades/oftalmologia/2.jpg",
+      "/images/especialidades/oftalmologia/3.jpg",
     ],
   },
 ];
 
-// "Ver más" ahora lleva a la página completa de especialidades
-// (app/especialidades/page.jsx) — como es un <a> normal (no <Link>),
-// hace una navegación completa del navegador, así que el Loader se
-// vuelve a reproducir solo al entrar.
 const MORE_HREF = "/especialidades";
 
 function ChevronIcon({ direction = "right" }) {
@@ -105,12 +141,18 @@ function SpecialtyModal({ specialty, onClose }) {
     return () => document.removeEventListener("keydown", handleKey);
   }, [onClose, next, prev]);
 
+  // Bloquea el scroll del body mientras el modal está abierto,
+  // para que el nav fijo del sitio no quede "flotando" sobre el modal.
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, []);
+
   return (
-    <div
-      className={styles.overlay}
-      onClick={onClose}
-      role="presentation"
-    >
+    <div className={styles.overlay} onClick={onClose} role="presentation">
       <div
         className={styles.modal}
         role="dialog"
@@ -128,10 +170,12 @@ function SpecialtyModal({ specialty, onClose }) {
         </button>
 
         <div className={styles.carousel}>
-          <img
+          <Image
             key={slide}
             src={specialty.gallery[slide]}
             alt={`${specialty.name} ${slide + 1}`}
+            fill
+            priority={slide === 0}
             className={styles.carouselImage}
           />
 
@@ -202,9 +246,11 @@ export default function Especialidades() {
             onClick={() => setOpenId(sp.id)}
           >
             <span className={styles.cardImageWrap}>
-              <img
+              <Image
                 src={sp.cover}
                 alt={sp.name}
+                width={400}
+                height={300}
                 className={styles.cardImage}
               />
             </span>
@@ -212,14 +258,14 @@ export default function Especialidades() {
             <span className={styles.cardDesc}>{sp.shortDesc}</span>
           </button>
         ))}
-
-        <a href={MORE_HREF} className={styles.moreLink}>
-          <span className={styles.moreCircle}>
-            <ChevronIcon direction="right" />
-          </span>
-          <span className={styles.moreLabel}>Ver más</span>
-        </a>
       </div>
+
+      <a href={MORE_HREF} className={styles.moreLink}>
+        <span className={styles.moreCircle}>
+          <ChevronIcon direction="right" />
+        </span>
+        <span className={styles.moreLabel}>Ver más</span>
+      </a>
 
       {activeSpecialty && (
         <SpecialtyModal

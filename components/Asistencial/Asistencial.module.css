@@ -10,11 +10,32 @@
   position: relative;
   background: #ffffff;
   font-family: 'Montserrat', system-ui, sans-serif;
+  overflow: hidden; /* evita que la marca de agua se desborde */
+}
+
+/* ---------- Marca de agua del logo ---------- */
+.watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-color: rgba(102, 33, 83, 0.03);
+
+  -webkit-mask-image: url('/logo-fondo.png');
+  mask-image: url('/logo-fondo.png');
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+  -webkit-mask-size: 150px 150px;
+  mask-size: 150px 150px;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
 }
 
 /* ---------- Banner con video recortado ---------- */
 .banner {
   position: relative;
+  z-index: 1;
   height: clamp(220px, 26vw, 320px);
   display: flex;
   align-items: center;
@@ -58,19 +79,23 @@
 }
 
 /* ---------- Contenido ---------- */
+/* IMPORTANTE: esta es la ÚNICA regla .content del archivo.
+   Sin padding-right para que la imagen pueda llegar al borde. */
 .content {
+  position: relative;
+  z-index: 1;
   padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
 }
 
 .intro {
   max-width: 68ch;
   margin: 0 auto clamp(2.5rem, 5vw, 4rem);
-  padding-right: clamp(1.5rem, 6vw, 5rem); /* el intro sigue sin tocar el borde */
+  padding-right: clamp(1.5rem, 6vw, 5rem);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(320px, 560px) 1fr;
+  grid-template-columns: minmax(500px, 600px) 1fr; /* antes: minmax(320px, 560px) */
   gap: clamp(2rem, 5vw, 4rem);
   align-items: stretch;
 }
@@ -79,6 +104,29 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+/* ---------- Badge "Primero y único" ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--teal) 0%, var(--teal-dark) 100%);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 8px 20px rgba(45, 133, 126, 0.35);
+}
+
+.badgeIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .heading {
@@ -93,6 +141,37 @@
 .headingLine {
   display: block;
   color: var(--plum);
+}
+
+.emphasisLine {
+  margin: 0 0 1.4rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--teal);
+  font-size: 0.98rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--teal-dark);
+}
+
+.highlight {
+  background: none;
+  color: var(--plum-deep);
+  font-weight: 800;
+  position: relative;
+  padding: 0 0.12em;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: 0.08em;
+  height: 0.36em;
+  background: rgba(58, 165, 157, 0.4);
+  z-index: -1;
+  border-radius: 2px;
 }
 
 .desc {
@@ -128,104 +207,24 @@
 .imageCol {
   position: relative;
   height: 100%;
-  min-height: 380px;
+  min-height: 450px;
 }
 
 .image {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 380px;
+  min-height: 450px;
   object-fit: cover;
   border-radius: 6px 0 0 6px;
   background: var(--lav);
   box-shadow: 0 24px 48px rgba(84, 23, 63, 0.16);
 }
 
-.asistencial {
-  --plum: #662153;
-  --plum-deep: #54173f;
-  --teal: #3aa59d;
-  --teal-dark: #2d857e;
-  --lav: #f4ebf1;
-
-  position: relative;
-  background: #ffffff;
-  font-family: 'Montserrat', system-ui, sans-serif;
-  overflow: hidden; /* evita que la marca de agua se desborde */
-}
-
-.emphasisLine {
-  margin: 0 0 1.4rem;
-  padding-left: 0.9rem;
-  border-left: 3px solid var(--teal);
-  font-size: 0.98rem;
-  font-weight: 600;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--teal-dark);
-}
-
-.highlight {
-  background: none;
-  color: var(--plum-deep);
-  font-weight: 800;
-  position: relative;
-  padding: 0 0.12em;
-}
-
-.highlight::after {
-  content: "";
-  position: absolute;
-  left: -0.05em;
-  right: -0.05em;
-  bottom: 0.08em;
-  height: 0.36em;
-  background: rgba(58, 165, 157, 0.4);
-  z-index: -1;
-  border-radius: 2px;
-}
-
-/* ---------- Marca de agua del logo ---------- */
-.watermark {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-
-  background-color: rgba(102, 33, 83, 0.03); /* gris-plum tenue */
-
-  -webkit-mask-image: url('/logo-fondo.png'); /* tu logo blanco */
-  mask-image: url('/logo-fondo.png');
-  -webkit-mask-repeat: repeat;
-  mask-repeat: repeat;
-  -webkit-mask-size: 150px 150px;
-  mask-size: 150px 150px;
-  -webkit-mask-position: 0 0;
-  mask-position: 0 0;
-}
-
-/* El banner ya tiene su propio fondo (video), así que va por encima */
-.banner {
-  position: relative;
-  z-index: 1;
-  /* ...resto igual... */
-}
-
-/* El contenido también va por encima de la marca de agua */
-.content {
-  position: relative;
-  z-index: 1;
-  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
-}
-
-
-
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-
   .content {
-    padding-right: clamp(1.5rem, 6vw, 5rem); /* restaura padding simétrico */
+    padding-right: clamp(1.5rem, 6vw, 5rem);
   }
 
   .grid {
