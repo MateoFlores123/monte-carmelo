@@ -12,13 +12,17 @@ export default function Nosotros() {
     <section id="nosotros" className={styles.section}>
       <div className={styles.inner}>
         {/* Foto con borde ondulado, mismo lenguaje visual del nav/hero */}
+        {/* Video con borde ondulado, mismo lenguaje visual del nav/hero */}
         <div className={styles.media}>
-          <div
-            className={styles.photo}
-            style={{ backgroundImage: "url(/images/nosotros.jpg)" }}
-            role="img"
-            aria-label="Instalaciones de Centro Médico Monte Carmelo"
-          />
+          <div className={styles.photoWrap}>
+            <iframe
+              className={styles.photo}
+              src="https://www.youtube.com/embed/ob0OF_IQbK8?rel=0&modestbranding=1&playsinline=1"
+              title="Video institucional Centro Médico Monte Carmelo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
           <svg
             className={styles.photoEdge}
             viewBox="0 0 100 100"

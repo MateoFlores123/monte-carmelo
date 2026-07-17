@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
-.header {
+:root {
   --plum: #662153;
   --plum-deep: #54173f;
   --teal: #3aa59d;
   --teal-dark: #2d857e;
   --teal-soft: #7fd0c8;
   --lav: #f4ebf1;
+}
+
+.header {
   --nav-h: clamp(60px, 6vw, 74px);
   --logo-size: clamp(100px, 16vw, 150px); 
   --line-start: calc(var(--logo-size) + 20px); 
@@ -17,7 +20,7 @@
   right: 0;
   z-index: 9999;
   height: var(--nav-h);
-  overflow: visible; /* deja que la placa del logo se salga del nav */
+  overflow: visible;
   font-family: 'Montserrat', system-ui, sans-serif;
   transition: height 0.5s cubic-bezier(0.65, 0, 0.35, 1);
 }
@@ -207,7 +210,7 @@
   width: 80% !important;
   height: 80% !important;
   object-fit: contain;
-  filter: brightness(0);
+  filter: brightness(0) invert(1);
 }
 
 .header.covering .logoBadge {
@@ -540,7 +543,7 @@
     width: 68% !important;
     height: 68% !important;
     object-fit: contain;
-    filter: brightness(0);
+    filter: brightness(0) invert(1);
   }
 }
 
