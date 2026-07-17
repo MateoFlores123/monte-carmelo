@@ -1,12 +1,13 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./Hero.module.css";
+import Image from "next/image";
 
 // Cada slide trae su propia foto y su propio texto — cámbialos por tu
 // contenido real (fachada, consultorios, equipo, etc.)
 const SLIDES = [
   {
-    img: "/images/hero-1.jpg",
+    img: "/images/hero-1.webp",
     imgPosition: "185% 40%",
     imgSize: "85% auto",
     eyebrow: "Bienvenido a",
@@ -19,7 +20,7 @@ const SLIDES = [
     ctaGhostHref: "#nosotros",
   },
   {
-    img: "/images/hero-2.jpg",
+    img: "/images/hero-2.webp",
     imgPosition: "117% 40%",
     eyebrow: "Salud ocupacional",
     title: "Cuidamos",
@@ -31,7 +32,7 @@ const SLIDES = [
     ctaGhostHref: "#ocupacional",
   },
   {
-    img: "/images/hero-3.jpg",
+    img: "/images/hero-3.webp",
     imgPosition: "150% center", // más hacia la izquierda
     imgSize: "80% auto",
     eyebrow: "Atención asistencial",
@@ -105,15 +106,22 @@ export default function Hero() {
       {/* Carrusel a pantalla completa, se mete detrás del nav fijo */}
       <div className={styles.carousel} aria-hidden="true">
         {SLIDES.map((slide, i) => (
-          <div
-            key={slide.img}
-            className={`${styles.slide} ${slotFor(i)}`}
-            style={{
-              backgroundImage: `url(${slide.img})`,
-              backgroundPosition: slide.imgPosition || "center",
-              backgroundSize: slide.imgSize || "cover",
-            }}
-          />
+          <div key={slide.img} className={`${styles.slide} ${slotFor(i)}`}>
+            <Image
+              src={slide.img}
+              alt=""
+              fill
+              priority={i === 0}          // solo la primera carga con prioridad
+              fetchPriority={i === 0 ? "high" : "auto"}
+              loading={i === 0 ? "eager" : "lazy"}
+              sizes="100vw"
+              quality={75}
+              style={{
+                objectFit: "cover",
+                objectPosition: slide.imgPosition || "center",
+              }}
+            />
+          </div>
         ))}
       </div>
 

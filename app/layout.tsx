@@ -23,12 +23,17 @@ export const metadata = {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="es" className={clinicFont.variable}>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-1.webp"
+          fetchPriority="high"
+        />
+      </head>
       <body>
         <Loader />
-        
 
-        {/* Aquí Next.js pone el contenido de cada página: app/page.tsx
-            para "/", app/especialidades/page.jsx para "/especialidades", etc. */}
         {children}
 
         <Socialbar />
