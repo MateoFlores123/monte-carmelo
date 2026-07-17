@@ -7,8 +7,8 @@ import Image from "next/image";
 // contenido real (fachada, consultorios, equipo, etc.)
 const SLIDES = [
   {
-    img: "/images/hero-1.webp",
-    imgPosition: "185% 40%",
+    img: "/images/hero-1.1.webp",
+    imgPosition: "100% 40%",
     imgSize: "85% auto",
     eyebrow: "Bienvenido a",
     title: "Monte Carmelo",
@@ -32,9 +32,9 @@ const SLIDES = [
     ctaGhostHref: "#ocupacional",
   },
   {
-    img: "/images/hero-3.webp",
+    img: "/images/hero-3.3.webp",
     imgPosition: "150% center", // más hacia la izquierda
-    imgSize: "80% auto",
+    imgSize: "30% auto",
     eyebrow: "Atención asistencial",
     title: "Un equipo",
     titleLine: "para tu salud",
