@@ -170,6 +170,10 @@
     align-items: flex-start;
     gap: 0.6rem;
   }
+
+  .footer {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./Loader.module.css";
 
-const MIN_DURATION = 1400; // ms mínimo visible, para que no "parpadee" en conexiones rápidas
+const MIN_DURATION = 1400;  // ms mínimo visible, para que no "parpadee" en conexiones rápidas
+const MAX_DURATION = 3000;  // ms máximo de espera, aunque falten imágenes por cargar
 const TRAVEL_DURATION = 700; // debe coincidir con la transición de .travelGroup.docking
 
 export default function Loader() {
@@ -17,8 +18,12 @@ export default function Loader() {
     document.body.style.overflow = "hidden";
 
     const start = Date.now();
+    let finished = false;
 
     function finish() {
+      if (finished) return;
+      finished = true;
+
       const elapsed = Date.now() - start;
       const wait = Math.max(MIN_DURATION - elapsed, 0);
 
@@ -57,6 +62,10 @@ export default function Loader() {
       }, TRAVEL_DURATION);
     }
 
+    // Tope máximo: si "load" tarda demasiado (imágenes pesadas, etc.),
+    // igual avanzamos pasado MAX_DURATION.
+    const maxTimer = window.setTimeout(finish, MAX_DURATION);
+
     if (document.readyState === "complete") {
       finish();
     } else {
@@ -65,6 +74,7 @@ export default function Loader() {
 
     return () => {
       window.removeEventListener("load", finish);
+      window.clearTimeout(maxTimer);
       document.body.style.overflow = prevOverflow;
     };
   }, []);
@@ -78,7 +88,6 @@ export default function Loader() {
       aria-live="polite"
       aria-label="Cargando Monte Carmelo"
     >
-      {/* Fondo animado: manchas suaves flotando, mismos colores de marca */}
       <div className={styles.bg} aria-hidden="true">
         <span className={`${styles.blob} ${styles.blobTeal}`} />
         <span className={`${styles.blob} ${styles.blobLav}`} />
@@ -102,9 +111,6 @@ export default function Loader() {
 
       <p className={styles.eyebrow}>Bienvenido a</p>
 
-      {/* Grupo que "viaja": logo (con texto) se desvanece mientras la
-          bolita crece y ambos se trasladan juntos hacia el logo real
-          del nav — por eso comparten el mismo transform. */}
       <div ref={groupRef} className={styles.travelGroup}>
         <Image
             ref={logoRef}

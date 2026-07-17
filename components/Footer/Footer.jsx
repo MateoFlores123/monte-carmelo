@@ -5,8 +5,8 @@ import styles from "./Footer.module.css";
 
 // Actualiza estos datos con la información real de la clínica.
 const CONTACT = {
-  phone: "+51 954 000 000",
-  email: "contacto@montecarmelo.pe",
+  phone: "+51 991 437 584",
+  email: "ocupacional.comercial@montecarmelocm.com",
 };
 
 const NAV_LINKS = [
@@ -26,14 +26,14 @@ const LEGAL_LINKS = [
 const SOCIALS = [
   {
     label: "Facebook",
-    href: "https://facebook.com",
+    href: "https://www.facebook.com/CMMonteCarmelo/",
     icon: (
       <path d="M14.2 8.4h-1.8V7.1c0-.47.38-.85.85-.85h.95V4h-1.8a2.7 2.7 0 0 0-2.7 2.7v1.7H8.1v2.35h1.6V18h2.7v-7.25h1.6l.2-2.35Z" />
     ),
   },
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/montecarmelo_med/",
     icon: (
       <>
         <rect x="4.5" y="4.5" width="15" height="15" rx="4.2" />
@@ -44,7 +44,7 @@ const SOCIALS = [
   },
   {
     label: "WhatsApp",
-    href: "https://wa.me/51954000000",
+    href: "https://wa.me/51959635451",
     icon: (
       <path d="M12 4.5a7.5 7.5 0 0 0-6.47 11.28L4.5 19.5l3.86-1.01A7.5 7.5 0 1 0 12 4.5Zm4.14 10.6c-.17.49-.99.93-1.4.98-.36.05-.77.07-1.24-.07-.29-.09-.65-.21-1.12-.41-1.98-.86-3.27-2.85-3.37-2.98-.1-.14-.8-1.07-.8-2.04 0-.97.5-1.44.68-1.64.17-.2.38-.24.5-.24h.37c.12 0 .28-.04.43.33.17.4.57 1.37.62 1.47.05.1.08.22.02.36-.07.14-.1.22-.2.35-.11.12-.22.27-.31.36-.1.1-.21.21-.09.43.12.21.53.89 1.15 1.44.8.71 1.47.93 1.68 1.03.21.1.34.09.47-.05.13-.14.54-.62.68-.84.15-.21.29-.17.48-.1.2.07 1.24.58 1.45.69.21.1.36.16.41.25.05.1.05.53-.12 1.02Z" />
     ),
