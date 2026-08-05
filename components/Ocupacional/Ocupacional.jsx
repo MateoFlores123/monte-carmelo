@@ -75,7 +75,7 @@ const STAGES = [
 // nombres (o cambia la lista por los nombres reales de tus archivos)
 const COMPANY_LOGOS = [
   { file: "empresa-1.png", scale: 1 },
-  { file: "empresa-2.png", scale: 1 },
+  { file: "empresa-5.png", scale: 1 },
   { file: "empresa-3.png", scale: 1 },
   { file: "empresa-4.png", scale: 1 },
 ];

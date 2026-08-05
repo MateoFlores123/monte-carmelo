@@ -1,0 +1,19 @@
+# Monte Carmelo
+
+> Monte Carmelo es un centro médico especializado en medicina asistencial y ocupacional, ubicado en Arequipa, Perú. Ofrecemos servicios de salud ocupacional, exámenes médicos, y atención asistencial para empresas y particulares.
+
+## Sobre nosotros
+- [Quiénes somos](https://montecarmelocm.com/#nosotros) — Historia, misión y equipo médico de Monte Carmelo.
+
+## Servicios
+- [Medicina ocupacional](https://montecarmelocm.com/#asistencial) — Exámenes médicos ocupacionales, evaluaciones de salud laboral, certificados de aptitud médica.
+- [Medicina asistencial](https://montecarmelocm.com/#ocupacional) — Atención médica general y especializada.
+
+## Ubicación y contacto
+- [Contacto](https://montecarmelocm.com/#contacto) — Dirección, teléfono y formulario de contacto. Ubicados en Arequipa, Perú.
+
+## Información adicional
+- Idioma: Español
+- País: Perú
+- Ciudad: Arequipa
+- Sector: Salud / Medicina ocupacional y asistencial
