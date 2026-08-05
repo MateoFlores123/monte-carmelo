@@ -2,6 +2,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import { ReactNode } from "react";
 import Loader from "../components/Loader/Loader";
 import Socialbar from "../components/Socialbar/Socialbar";
+import CookieBanner from '@/components/CookieBanner'
 
 import "./globals.css";
 
@@ -35,8 +36,9 @@ export default function RootLayout({ children }: LayoutProps) {
         <Loader />
 
         {children}
-
+        <CookieBanner />
         <Socialbar />
+
       </body>
     </html>
   );
