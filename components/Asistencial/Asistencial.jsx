@@ -58,10 +58,7 @@ export default function Asistencial() {
 
         <div className={styles.grid}>
           <div className={styles.textCol}>
-            <span className={styles.badge}>
-              
-              Primero y único en su categoría
-            </span>
+            <span className={styles.badge}>Primero y único en su categoría</span>
 
             <h3 className={styles.heading}>
               Primer y <mark className={styles.highlight}>único</mark> centro de
@@ -86,12 +83,13 @@ export default function Asistencial() {
             </a>
           </div>
 
+          {/* La imagen usa `fill`: se adapta al tamaño de .imageCol */}
           <div className={styles.imageCol}>
             <Image
               src="/images/asistencial/oncologia.jpg"
-              alt="Centro de Investigación Oncológica"
-              width={600}
-              height={400}
+              alt="Dr. Renzo Álvarez Barreda, Centro de Investigación Oncológica"
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
               className={styles.image}
             />
           </div>

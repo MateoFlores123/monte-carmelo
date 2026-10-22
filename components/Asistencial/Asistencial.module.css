@@ -80,12 +80,12 @@
 
 /* ---------- Contenido ---------- */
 /* IMPORTANTE: esta es la ÚNICA regla .content del archivo.
-   Sin padding-right para que la imagen pueda llegar al borde. */
+   Sin padding-right para que la imagen pueda llegar al borde.
+   Sin altura fija: la altura la define el contenido. */
 .content {
   position: relative;
   z-index: 1;
   padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
-  height: 700px;
 }
 
 .intro {
@@ -96,9 +96,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: minmax(500px, 600px) 1fr; /* antes: minmax(320px, 560px) */
+  grid-template-columns: minmax(0, 640px) minmax(0, 1fr); /* texto con ancho fijo, la imagen ocupa el resto */
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: stretch;
+  align-items: center;
 }
 
 .textCol {
@@ -205,21 +205,21 @@
 }
 
 /* ---------- Imagen ---------- */
+/* El contenedor define el tamaño; <Image fill> lo llena. */
 .imageCol {
-  position: relative;
-  height: 10%;
-  min-height: 200px;
+  position: relative; /* necesario para <Image fill> */
+  aspect-ratio: 16 / 10; /* más alta que antes: recorta menos en PC */
+  min-height: 380px;
+  max-height: 640px; /* evita que crezca demasiado en pantallas muy anchas */
+  border-radius: 6px 0 0 6px;
+  overflow: hidden;
+  background: var(--lav);
+  box-shadow: 0 24px 48px rgba(84, 23, 63, 0.16);
 }
 
 .image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 450px;
   object-fit: cover;
-  border-radius: 6px 0 0 6px;
-  background: var(--lav);
-  box-shadow: 0 24px 48px rgba(84, 23, 63, 0.16);
+  object-position: 50% 20%; /* prioriza la parte superior (rostro) */
 }
 
 /* ---------- Responsive ---------- */
@@ -238,12 +238,21 @@
 
   .imageCol {
     order: 1;
-    min-height: 260px;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: 4 / 3;
+    border-radius: 6px; /* en móvil ya no toca el borde */
   }
 
   .intro {
     text-align: left;
     padding-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageCol {
+    aspect-ratio: 1 / 1; /* más alto en pantallas angostas para no perder el rostro */
   }
 }
 

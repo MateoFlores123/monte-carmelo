@@ -1,0 +1,90 @@
+/* Botón flotante abajo a la izquierda
+   (abajo a la derecha ya están WhatsApp e Instagram) */
+.boton {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1000;
+
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  background: #662153;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(84, 23, 63, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  background: #54173f;
+  transform: translateY(-2px);
+}
+
+.activo {
+  background: #3aa59d;
+  box-shadow: 0 10px 24px rgba(45, 133, 126, 0.35);
+}
+
+.activo:hover,
+.activo:focus-visible {
+  background: #2d857e;
+}
+
+/* Barras animadas mientras suena */
+.barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+}
+
+.barras span {
+  width: 4px;
+  height: 100%;
+  border-radius: 2px;
+  background: currentColor;
+  animation: rebote 0.9s ease-in-out infinite;
+}
+
+.barras span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.barras span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes rebote {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+
+.barras span {
+  transform-origin: bottom;
+}
+
+@media (max-width: 600px) {
+  .boton {
+    left: 16px;
+    bottom: 16px;
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boton {
+    transition: none;
+  }
+  .barras span {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}

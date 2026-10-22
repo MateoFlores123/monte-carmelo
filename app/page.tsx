@@ -8,7 +8,8 @@ import Especialidades from "../components/Especialidades/Especialidades";
 import Galeria from "../components/Galeria/Galeria";
 import Contacto from "../components/Contacto/Contacto";
 import Footer from "../components/Footer/Footer";
-import Nav from "../components/Navbar/Nav"
+import Nav from "../components/Navbar/Nav";
+import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 
 export default function Page() {
   return (
@@ -24,7 +25,7 @@ export default function Page() {
       <Galeria />
       <Contacto />
       <Footer />
-
+      <MusicPlayer />
     </main>
   );
 }
