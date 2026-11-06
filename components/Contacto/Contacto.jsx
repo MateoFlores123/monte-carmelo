@@ -64,8 +64,8 @@ const CONTACTS = {
     title: "Medicina Asistencial",
     // ⚠️ REVISAR: este correo usa otro dominio (montecarmelo.pe) y el
     // teléfono +51 987 654 321 parece de ejemplo. Pon los datos reales.
-    email: "asistencial@montecarmelo.pe",
-    phone: "+51 987 654 321",
+    email: "informes@montecarmelocm.com",
+    phone: "+51 959 635 451",
     phoneHref: "+51987654321",
   },
   ocupacional: {
