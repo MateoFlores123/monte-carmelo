@@ -155,7 +155,7 @@ export default function Nav() {
             <span className={styles.logoBadge}>
               <Image
                 id="navLogoTarget"
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Monte Carmelo"
                 width={180}
                 height={60}
@@ -240,7 +240,7 @@ export default function Nav() {
           onClick={(e) => handleSectionClick(e, "#home")}
         >
           <Image
-            src="/logo-fondo.png"
+            src="/logo-fondo.webp"
             alt="Monte Carmelo"
             width={60}
             height={60}

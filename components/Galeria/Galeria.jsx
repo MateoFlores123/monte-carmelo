@@ -8,13 +8,13 @@ import styles from "./Galeria.module.css";
    por tu contenido real — el orden a→g determina dónde cae cada una
    en la grilla, no el orden en que las listas aquí. */
 const IMAGES = [
-  { src: "/images/galeria/1.jpg", alt: "Recepción de Monte Carmelo", label: "Recepción", area: "a" },
-  { src: "/images/galeria/2.jpg", alt: "Sala de espera", label: "Sala de espera", area: "b" },
-  { src: "/images/galeria/3.jpg", alt: "Consultorio médico", label: "Consultorio", area: "c" },
-  { src: "/images/galeria/4.jpg", alt: "Equipo médico en atención", label: "Nuestro equipo", area: "d" },
-  { src: "/images/galeria/5.jpg", alt: "Sala de procedimientos", label: "Procedimientos", area: "e" },
-  { src: "/images/galeria/6.jpg", alt: "Fachada del centro médico", label: "Fachada", area: "f" },
-  { src: "/images/galeria/7.jpg", alt: "Detalle de equipamiento", label: "Equipamiento", area: "g" },
+  { src: "/images/galeria/1.webp", alt: "Atención en recepción de Monte Carmelo Centro Médico, Arequipa", label: "Recepción", area: "a" },
+  { src: "/images/galeria/2.webp", alt: "Equipo de enfermería de Monte Carmelo Centro Médico en Arequipa", label: "Enfermería", area: "b" },
+  { src: "/images/galeria/3.webp", alt: "Médicos de Monte Carmelo Centro Médico, Arequipa", label: "Nuestro equipo", area: "c" },
+  { src: "/images/galeria/4.webp", alt: "Médicos especialistas de Monte Carmelo en Arequipa", label: "Especialistas", area: "d" },
+  { src: "/images/galeria/5.webp", alt: "Consulta médica con paciente en Monte Carmelo, Arequipa", label: "Consulta", area: "e" },
+  { src: "/images/galeria/6.webp", alt: "Consultorio médico de Monte Carmelo Centro Médico", label: "Consultorio", area: "f" },
+  { src: "/images/galeria/7.webp", alt: "Paciente en tratamiento en Monte Carmelo Centro Médico", label: "Tratamientos", area: "g" },
 ];
 
 export default function Galeria() {

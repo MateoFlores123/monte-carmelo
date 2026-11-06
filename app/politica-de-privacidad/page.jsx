@@ -1,7 +1,8 @@
 import LegalDoc from "@/components/LegalDoc/LegalDoc";
 
 export const metadata = {
-  title: "Política de Privacidad | Monte Carmelo Centro Médico",
+  alternates: { canonical: "/politica-de-privacidad" },
+  title: "Política de Privacidad",
   description:
     "Conoce cómo Monte Carmelo Centro Médico recopila, usa y protege tus datos personales, conforme a la Ley N° 29733.",
 };

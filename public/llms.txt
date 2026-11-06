@@ -1,19 +1,17 @@
-# Monte Carmelo
+# Monte Carmelo Centro Médico
 
-> Monte Carmelo es un centro médico especializado en medicina asistencial y ocupacional, ubicado en Arequipa, Perú. Ofrecemos servicios de salud ocupacional, exámenes médicos, y atención asistencial para empresas y particulares.
+> Monte Carmelo Centro Médico es un centro médico en Arequipa, Perú, con más de 30 años de experiencia. IPRESS categoría I-3. Ofrece salud ocupacional para empresas (exámenes médicos ocupacionales pre ocupacionales, periódicos y de retiro, vigilancia médica, resultados en la plataforma MEDIWEB) y medicina asistencial con más de 28 especialidades, además del primer Centro de Investigación Oncológica de la región.
 
-## Sobre nosotros
-- [Quiénes somos](https://montecarmelocm.com/#nosotros) — Historia, misión y equipo médico de Monte Carmelo.
+## Salud ocupacional
+- [Salud ocupacional en Arequipa](https://montecarmelocm.com/salud-ocupacional-arequipa): servicios de salud ocupacional para empresas, unidad activa desde 2008.
+- [Exámenes médicos ocupacionales en Arequipa](https://montecarmelocm.com/examenes-medicos-ocupacionales-arequipa): tipos de EMO, evaluaciones que incluyen y proceso de atención.
 
-## Servicios
-- [Medicina ocupacional](https://montecarmelocm.com/#asistencial) — Exámenes médicos ocupacionales, evaluaciones de salud laboral, certificados de aptitud médica.
-- [Medicina asistencial](https://montecarmelocm.com/#ocupacional) — Atención médica general y especializada.
+## Medicina asistencial
+- [Especialidades médicas](https://montecarmelocm.com/especialidades): listado de especialidades y citas por WhatsApp.
+- [Medicina asistencial e investigación oncológica](https://montecarmelocm.com/#asistencial)
 
-## Ubicación y contacto
-- [Contacto](https://montecarmelocm.com/#contacto) — Dirección, teléfono y formulario de contacto. Ubicados en Arequipa, Perú.
-
-## Información adicional
-- Idioma: Español
-- País: Perú
-- Ciudad: Arequipa
-- Sector: Salud / Medicina ocupacional y asistencial
+## Institución y contacto
+- [Nosotros](https://montecarmelocm.com/#nosotros): historia, misión, visión y valores.
+- [Contacto](https://montecarmelocm.com/#contacto)
+- Dirección: Calle Francisco Gómez de la Torre 119, Arequipa, Perú
+- Medicina ocupacional: +51 991 437 584 · ocupacional.comercial@montecarmelocm.com

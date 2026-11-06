@@ -23,7 +23,7 @@ export default function CookieBanner() {
       }}
     >
       Usamos cookies para mejorar tu experiencia en nuestro sitio. Al continuar navegando, aceptas nuestra{' '}
-      <a href="/politica-de-cookies" style={{ color: '#34d399', textDecoration: 'underline' }}>
+      <a href="/politica-de-privacidad" style={{ color: '#34d399', textDecoration: 'underline' }}>
         política de cookies
       </a>.
     </CookieConsent>

@@ -89,7 +89,7 @@
 .photoImg {
   position: absolute;
   inset: 0;
-  background-image: url('/images/contacto-bg.jpg');
+  background-image: url('/images/contacto-bg.webp');
   background-size: cover;
   background-position: center;
   filter: grayscale(0.25) contrast(1.03) brightness(1.01);

@@ -18,7 +18,8 @@ export default function Nosotros() {
             <iframe
               className={styles.photo}
               src="https://www.youtube.com/embed/ob0OF_IQbK8?rel=0&modestbranding=1&playsinline=1"
-              title="Video institucional Centro Médico Monte Carmelo"
+              title="Video institucional Centro Médico Monte Carmelo Arequipa"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
@@ -60,7 +61,7 @@ export default function Nosotros() {
           <h2 className={styles.title}>Acerca de Nosotros</h2>
 
           <p className={styles.text}>
-            En Centro Médico Monte Carmelo contamos con más de 31 años de
+            En Centro Médico Monte Carmelo, en Arequipa, contamos con más de 31 años de
             experiencia brindando servicios integrales de salud y salud
             ocupacional, con un enfoque basado en la calidad, innovación y
             atención humanizada.

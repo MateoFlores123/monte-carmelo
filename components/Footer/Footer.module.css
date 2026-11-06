@@ -184,3 +184,38 @@
     transition: none;
   }
 }
+/* ---------- Fila NAP + enlaces a servicios (SEO local) ---------- */
+.seoRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.8rem 2rem;
+  margin-top: 1.4rem;
+  font-size: 0.8rem;
+}
+.nap {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+.nap strong {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+.nap a,
+.serviceLinks a {
+  color: var(--teal-soft, #7fd0c8);
+  text-decoration: none;
+}
+.nap a:hover,
+.serviceLinks a:hover {
+  text-decoration: underline;
+}
+.serviceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

@@ -2,14 +2,18 @@
 import { useState, useEffect } from "react";
 import styles from "./Ocupacional.module.css";
 import Image from "next/image";
+import Link from "next/link";
+import { SITE } from "@/lib/site";
+
+const YEARS_OCC = new Date().getFullYear() - SITE.occupationalSince;
 
 const GALLERY_IMAGES = [
-  { src: "/images/ocupacional/galeria-1.jpg", top: "4%",  left: "2%",  rotate: "-7deg", orientation: "vertical" },
-  { src: "/images/ocupacional/galeria-2.jpg", top: "8%",  left: "26%", rotate: "5deg",  orientation: "horizontal" },
-  { src: "/images/ocupacional/galeria-3.jpg", top: "2%",  left: "52%", rotate: "-4deg", orientation: "vertical" },
-  { src: "/images/ocupacional/galeria-4.jpg", top: "38%", left: "12%", rotate: "6deg",  orientation: "horizontal" },
-  { src: "/images/ocupacional/galeria-5.jpg", top: "42%", left: "38%", rotate: "-6deg", orientation: "vertical" },
-  { src: "/images/ocupacional/galeria-6.jpg", top: "34%", left: "64%", rotate: "3deg",  orientation: "horizontal" },
+  { src: "/images/ocupacional/galeria-1.webp", top: "4%",  left: "2%",  rotate: "-7deg", orientation: "vertical" },
+  { src: "/images/ocupacional/galeria-2.webp", top: "8%",  left: "26%", rotate: "5deg",  orientation: "horizontal" },
+  { src: "/images/ocupacional/galeria-3.webp", top: "2%",  left: "52%", rotate: "-4deg", orientation: "vertical" },
+  { src: "/images/ocupacional/galeria-4.webp", top: "38%", left: "12%", rotate: "6deg",  orientation: "horizontal" },
+  { src: "/images/ocupacional/galeria-5.webp", top: "42%", left: "38%", rotate: "-6deg", orientation: "vertical" },
+  { src: "/images/ocupacional/galeria-6.webp", top: "34%", left: "64%", rotate: "3deg",  orientation: "horizontal" },
 ];
 
 // Las tres etapas del cuidado ocupacional. El orden importa: primero se
@@ -74,10 +78,11 @@ const STAGES = [
 // Logos de empresas: coloca los archivos en /public/empresas/ con estos
 // nombres (o cambia la lista por los nombres reales de tus archivos)
 const COMPANY_LOGOS = [
-  { file: "empresa-1.png", scale: 1 },
-  { file: "empresa-5.png", scale: 1 },
-  { file: "empresa-3.png", scale: 1 },
-  { file: "empresa-4.png", scale: 1 },
+  // name: pon el nombre real de cada empresa (se usa como texto alternativo)
+  { file: "empresa-1.webp", scale: 1, name: "Empresa cliente 1" },
+  { file: "empresa-5.webp", scale: 1, name: "Empresa cliente 2" },
+  { file: "empresa-3.webp", scale: 1, name: "Empresa cliente 3" },
+  { file: "empresa-4.webp", scale: 1, name: "Empresa cliente 4" },
 ];
 
 export default function Ocupacional() {
@@ -113,19 +118,26 @@ export default function Ocupacional() {
         <div className={styles.headerGrid}>
           <header className={styles.header}>
             <span className={styles.eyebrow}>Salud ocupacional</span>
-            <h2 className={styles.title}>Medicina Ocupacional</h2>
+            <h2 className={styles.title}>Salud Ocupacional en Arequipa</h2>
             <p className={styles.text}>
-              En Centro Médico Monte Carmelo contamos con una Unidad de{" "}
+              En Centro Médico Monte Carmelo, en Arequipa, contamos con una Unidad de{" "}
               <strong>Medicina Ocupacional</strong> activa desde el año{" "}
               <strong>2008</strong>, especializada en la evaluación y
               prevención de la salud de los trabajadores. Brindamos{" "}
               <strong>Exámenes Médicos Ocupacionales (EMO)</strong> adaptados
               al perfil y riesgos de cada puesto laboral.
             </p>
+            <p className={styles.text}>
+              <Link href="/salud-ocupacional-arequipa">Conoce nuestro servicio de salud ocupacional</Link>
+              {" · "}
+              <Link href="/examenes-medicos-ocupacionales-arequipa">Tipos de exámenes ocupacionales</Link>
+            </p>
             <div className={styles.statRow}>
               <span className={styles.stat}>
-                <span className={styles.statNum}>+33</span> años de
-                experiencia
+                {/* Antes decía "+33 años", que contradice "desde 2008" en esta
+                    misma sección. Los 33 años son del centro médico. */}
+                <span className={styles.statNum}>+{YEARS_OCC}</span> años en
+                salud ocupacional
               </span>
               <span className={styles.stat}>
                 <span className={styles.statNum}>3</span> etapas de
@@ -152,7 +164,7 @@ export default function Ocupacional() {
             >
               <div className={styles.photo}>
                 <Image
-                  src="/images/ocupacional.jpg"
+                  src="/images/ocupacional.webp"
                   alt="Evaluación médica ocupacional en Monte Carmelo"
                   fill
                   sizes="(max-width: 880px) 90vw, 400px"
@@ -266,7 +278,7 @@ export default function Ocupacional() {
                 <div key={logo.file} className={styles.logo}>
                   <Image
                     src={`/images/empresas/${logo.file}`}
-                    alt=""
+                    alt={`Logo de ${logo.name}`}
                     width={180}
                     height={90}
                     className={styles.logoImg}

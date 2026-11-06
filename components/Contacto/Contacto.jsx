@@ -2,6 +2,7 @@
 "use client";
 import { useState } from "react";
 import styles from "./Contacto.module.css";
+import { SITE } from "@/lib/site";
 
 const IconAsistencial = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"
@@ -61,20 +62,21 @@ const CONTACTS = {
     Icon: IconAsistencial,
     eyebrow: "Atención a pacientes",
     title: "Medicina Asistencial",
+    // ⚠️ REVISAR: este correo usa otro dominio (montecarmelo.pe) y el
+    // teléfono +51 987 654 321 parece de ejemplo. Pon los datos reales.
     email: "asistencial@montecarmelo.pe",
     phone: "+51 987 654 321",
     phoneHref: "+51987654321",
-    mapQuery: "Centro Médico Monte Carmelo, Arequipa",
   },
   ocupacional: {
     key: "ocupacional",
     Icon: IconOcupacional,
     eyebrow: "Salud en el trabajo",
     title: "Medicina Ocupacional",
-    email: "ocupacional.comercial@montecarmelocm.com",
-    phone: "+51 912 345 678",
-    phoneHref: "+51991437584",
-    mapQuery: "Centro Médico Monte Carmelo, Arequipa",
+    email: SITE.emails.ocupacional,
+    // Antes se mostraba "+51 912 345 678" pero al tocarlo llamaba al 991 437 584.
+    phone: SITE.phones.ocupacional.display,
+    phoneHref: SITE.phones.ocupacional.href,
   },
 };
 
@@ -86,7 +88,7 @@ export default function Contacto() {
   const [sent, setSent] = useState(false);
 
   const contact = CONTACTS[area];
-  const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.mapQuery)}`;
+  const mapHref = SITE.mapsUrl;
 
   function handleChange(e) {
     const { name, value } = e.target;

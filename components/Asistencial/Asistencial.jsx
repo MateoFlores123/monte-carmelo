@@ -50,7 +50,7 @@ export default function Asistencial() {
 
       <div className={styles.content}>
         <p className={styles.intro}>
-          En Centro Médico Monte Carmelo brindamos atención médica
+          En Centro Médico Monte Carmelo, en Arequipa, brindamos atención médica
           especializada orientada a la prevención, diagnóstico, tratamiento y
           seguimiento integral de diversas condiciones de salud contando con
           el:
@@ -86,7 +86,7 @@ export default function Asistencial() {
           {/* La imagen usa `fill`: se adapta al tamaño de .imageCol */}
           <div className={styles.imageCol}>
             <Image
-              src="/images/asistencial/oncologia.jpg"
+              src="/images/asistencial/oncologia.webp"
               alt="Dr. Renzo Álvarez Barreda, Centro de Investigación Oncológica"
               fill
               sizes="(max-width: 900px) 100vw, 50vw"

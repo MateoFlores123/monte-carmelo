@@ -10,6 +10,13 @@ import Contacto from "../components/Contacto/Contacto";
 import Footer from "../components/Footer/Footer";
 import Nav from "../components/Navbar/Nav";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  // Título y descripción de la portada: los hereda del layout (default).
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 
 export default function Page() {
   return (

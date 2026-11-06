@@ -114,7 +114,7 @@ export default function Loader() {
       <div ref={groupRef} className={styles.travelGroup}>
         <Image
             ref={logoRef}
-            src="/logo.png"
+            src="/logo.webp"
             alt="Monte Carmelo, Centro Médico"
             width={300}
             height={120}

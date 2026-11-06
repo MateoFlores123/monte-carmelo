@@ -700,3 +700,10 @@
     opacity: 1;
   }
 }
+/* Enlaces internos a las páginas de servicio (SEO) */
+.text a {
+  color: var(--teal-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}

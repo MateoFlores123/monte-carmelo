@@ -22,8 +22,8 @@
 
   background-color: rgba(102, 33, 83, 0.03);
 
-  -webkit-mask-image: url('/logo-fondo.png');
-  mask-image: url('/logo-fondo.png');
+  -webkit-mask-image: url('/logo-fondo.webp');
+  mask-image: url('/logo-fondo.webp');
   -webkit-mask-repeat: repeat;
   mask-repeat: repeat;
   -webkit-mask-size: 150px 150px;

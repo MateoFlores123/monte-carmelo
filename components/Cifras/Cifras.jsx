@@ -12,7 +12,7 @@ const STATS = [
   { value: 98, suffix: "%", label: "Satisfacción", text: "De pacientes recomienda nuestra atención" },
 ];
 
-const BG_IMAGE = "/images/cifras-bg.jpg";
+const BG_IMAGE = "/images/cifras-bg.webp";
 
 function useCountUp(target, active, duration = 1600) {
   const [value, setValue] = useState(0);

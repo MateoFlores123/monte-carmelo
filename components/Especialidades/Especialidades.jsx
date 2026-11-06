@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback } from "react";
 import styles from "./Especialidades.module.css";
 import Image from "next/image";
 
+// Galerías: solo fotos que existen en /public. Para agregar más, súbelas
+// en .webp a la carpeta de la especialidad y añádelas aquí.
 const SPECIALTIES = [
   {
     id: "oncologia",
@@ -11,11 +13,9 @@ const SPECIALTIES = [
       "Brindamos atención especializada en la prevención, diagnóstico y tratamiento",
     fullDesc:
       "Contamos con un equipo de oncólogos especialistas que acompañan al paciente en cada etapa: prevención, diagnóstico temprano, tratamiento y seguimiento integral, siempre con calidez humana y los más altos estándares de calidad.",
-    cover: "/images/especialidades/oncologia/1.jpg",
+    cover: "/images/especialidades/oncologia/1.webp",
     gallery: [
-      "/images/especialidades/oncologia/1.jpg",
-      "/images/especialidades/oncologia/2.jpg",
-      "/images/especialidades/oncologia/3.jpg",
+      "/images/especialidades/oncologia/1.webp",
     ],
   },
   {
@@ -25,11 +25,9 @@ const SPECIALTIES = [
       "Brindamos evaluación, diagnóstico y tratamiento de enfermedades respiratorias cuidando la salud pulmonar",
     fullDesc:
       "Evaluamos y tratamos enfermedades respiratorias con equipamiento moderno, enfocados en cuidar la salud pulmonar de nuestros pacientes a través de un diagnóstico preciso y un seguimiento cercano.",
-    cover: "/images/especialidades/neumologia/1.jpg",
+    cover: "/images/especialidades/neumologia/1.webp",
     gallery: [
-      "/images/especialidades/neumologia/1.jpg",
-      "/images/especialidades/neumologia/2.jpg",
-      "/images/especialidades/neumologia/3.jpg",
+      "/images/especialidades/neumologia/1.webp",
     ],
   },
   {
@@ -39,11 +37,9 @@ const SPECIALTIES = [
       "Hacemos evaluación y seguimiento de enfermedades del sitema hormonal y metabólico.",
     fullDesc:
       "Nuestro equipo de endocrinología ofrece evaluación integral, diagnóstico oportuno y tratamiento personalizado para el cuidado de la salud, acompañando al paciente con seguimiento continuo.",
-    cover: "/images/especialidades/endocrinologia/1.jpg",
+    cover: "/images/especialidades/endocrinologia/1.webp",
     gallery: [
-      "/images/especialidades/endocrinologia/1.jpg",
-      "/images/especialidades/endocrinologia/2.jpg",
-      "/images/especialidades/endocrinologia/3.jpg",
+      "/images/especialidades/endocrinologia/1.webp",
     ],
   },
   {
@@ -53,11 +49,9 @@ const SPECIALTIES = [
       "Brindamos terapia médica orientada al bienestar y acompañamiento integral del paciente",
     fullDesc:
       "Brindamos terapia médica orientada al bienestar y acompañamiento integral del paciente, aplicando protocolos seguros y personalizados según cada caso.",
-    cover: "/images/especialidades/ozonoterapia/1.jpg",
+    cover: "/images/especialidades/ozonoterapia/1.webp",
     gallery: [
-      "/images/especialidades/ozonoterapia/1.jpg",
-      "/images/especialidades/ozonoterapia/2.jpg",
-      "/images/especialidades/ozonoterapia/3.jpg",
+      "/images/especialidades/ozonoterapia/1.webp",
     ],
   },
   {
@@ -67,11 +61,10 @@ const SPECIALTIES = [
       "Evaluamos y tratamos trastornos del sueño promoviendo un descanso reparador",
     fullDesc:
       "Evaluamos y tratamos trastornos del sueño promoviendo un descanso reparador como parte fundamental de la salud, con un enfoque integral y seguimiento personalizado.",
-    cover: "/images/especialidades/terapia/1.jpg",
+    cover: "/images/especialidades/terapia/1.webp",
     gallery: [
-      "/images/especialidades/terapia/1.jpg",
-      "/images/especialidades/terapia/sueno-2.jpg",
-      "/images/especialidades/terapia/sueno-3.jpg",
+      "/images/especialidades/terapia/1.webp",
+      "/images/especialidades/terapia/2.webp",
     ],
   },
   {
@@ -81,11 +74,11 @@ const SPECIALTIES = [
       "Realizamos evaluaciones oftalmológicas orientadas al cuidado integral de la visión",
     fullDesc:
       "Realizamos evaluaciones oftalmológicas orientadas al cuidado integral de la visión y la detección temprana de alteraciones visuales, con equipamiento especializado.",
-    cover: "/images/especialidades/oftalmologia/1.jpg",
+    cover: "/images/especialidades/oftalmologia/1.webp",
     gallery: [
-      "/images/especialidades/oftalmologia/1.jpg",
-      "/images/especialidades/oftalmologia/2.jpg",
-      "/images/especialidades/oftalmologia/3.jpg",
+      "/images/especialidades/oftalmologia/1.webp",
+      "/images/especialidades/oftalmologia/2.webp",
+      "/images/especialidades/oftalmologia/3.webp",
     ],
   },
 ];

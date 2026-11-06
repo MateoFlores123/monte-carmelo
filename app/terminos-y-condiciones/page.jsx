@@ -1,7 +1,8 @@
 import LegalDoc from "@/components/LegalDoc/LegalDoc";
 
 export const metadata = {
-  title: "Términos y Condiciones | Monte Carmelo Centro Médico",
+  alternates: { canonical: "/terminos-y-condiciones" },
+  title: "Términos y Condiciones",
   description:
     "Términos y condiciones de uso del sitio web y servicios de Monte Carmelo Centro Médico.",
 };

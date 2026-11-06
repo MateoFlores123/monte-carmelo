@@ -2,19 +2,29 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
+import { SITE, fullAddress } from "@/lib/site";
 
 // Actualiza estos datos con la información real de la clínica.
 const CONTACT = {
-  phone: "+51 991 437 584",
-  email: "ocupacional.comercial@montecarmelocm.com",
+  phone: SITE.phones.ocupacional.display,
+  email: SITE.emails.ocupacional,
 };
 
+// Enlaces a las páginas de servicio: el footer aparece en todas las
+// páginas, así Google las encuentra y entiende que son importantes.
+const SERVICE_LINKS = [
+  { label: "Salud ocupacional en Arequipa", href: "/salud-ocupacional-arequipa" },
+  { label: "Exámenes médicos ocupacionales", href: "/examenes-medicos-ocupacionales-arequipa" },
+  { label: "Especialidades médicas", href: "/especialidades" },
+];
+
 const NAV_LINKS = [
-  { label: "Inicio", href: "#home" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Ocupacional", href: "#ocupacional" },
-  { label: "Asistencial", href: "#asistencial" },
-  { label: "Contacto", href: "#contacto" },
+  // "/#..." en vez de "#...": así también funcionan desde las subpáginas
+  { label: "Inicio", href: "/#home" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Ocupacional", href: "/#ocupacional" },
+  { label: "Asistencial", href: "/#asistencial" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 const LEGAL_LINKS = [
@@ -85,9 +95,9 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.row}>
           {/* Marca */}
-          <Link href="#home" className={styles.brand}>
+          <Link href="/" className={styles.brand}>
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Monte Carmelo Centro Médico"
               width={116}
               height={38}
@@ -130,6 +140,22 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Nombre + dirección + teléfono (NAP) visibles en todas las
+            páginas: señal clave para el SEO local en Arequipa. */}
+        <div className={styles.seoRow}>
+          <address className={styles.nap}>
+            <strong>{SITE.name}</strong> · {fullAddress}, Perú ·{" "}
+            <a href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
+          </address>
+          <ul className={styles.serviceLinks}>
+            {SERVICE_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className={styles.divider} aria-hidden="true" />

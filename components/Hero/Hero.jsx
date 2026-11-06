@@ -10,10 +10,10 @@ const SLIDES = [
     img: "/images/hero-1.1.webp",
     imgPosition: "100% 40%",
     imgSize: "85% auto",
-    eyebrow: "Bienvenido a",
+    eyebrow: "Centro médico en Arequipa",
     title: "Monte Carmelo",
     titleLine: "Centro Médico",
-    text: "Atención médica ocupacional y asistencial con calidez humana y los más altos estándares de calidad.",
+    text: "Salud ocupacional y atención asistencial en Arequipa, con calidez humana y los más altos estándares de calidad.",
     ctaLabel: "Agenda tu cita",
     ctaHref: "#contacto",
     ctaGhostLabel: "Conócenos",
@@ -22,12 +22,12 @@ const SLIDES = [
   {
     img: "/images/hero-2.webp",
     imgPosition: "117% 40%",
-    eyebrow: "Salud ocupacional",
+    eyebrow: "Salud ocupacional en Arequipa",
     title: "Cuidamos",
     titleLine: "a tu equipo",
     text: "Exámenes médicos ocupacionales y programas de prevención pensados para el bienestar de tus colaboradores.",
     ctaLabel: "Ver servicios",
-    ctaHref: "#ocupacional",
+    ctaHref: "/salud-ocupacional-arequipa",
     ctaGhostLabel: "Más información",
     ctaGhostHref: "#ocupacional",
   },
@@ -138,10 +138,18 @@ export default function Hero() {
             aria-hidden={i !== current}
           >
             <span className={styles.eyebrow}>{slide.eyebrow}</span>
-            <h1 className={styles.title}>
-              {slide.title}
-              <span className={styles.titleLine}>{slide.titleLine}</span>
-            </h1>
+            {/* Solo UN <h1> por página: el del primer slide. Antes los 3
+                slides eran <h1> (el HTML tenía 3 títulos principales). Los
+                demás usan <p> con la misma clase, se ven idénticos. */}
+            {(() => {
+              const TitleTag = i === 0 ? "h1" : "p";
+              return (
+                <TitleTag className={styles.title}>
+                  {slide.title}
+                  <span className={styles.titleLine}>{slide.titleLine}</span>
+                </TitleTag>
+              );
+            })()}
             <p className={styles.text}>{slide.text}</p>
             <div className={styles.actions}>
               <a href={slide.ctaHref} className={styles.cta} tabIndex={i === current ? 0 : -1}>
